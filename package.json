@@ -1,0 +1,24 @@
+{
+  "name": "@officert/vue-slideout-panel",
+  "version": "0.0.1",
+  "description": "Lib for creating stackable panels using Vue JS",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/officert/vue-slideout-panel.git"
+  },
+  "keywords": [
+    "Vue",
+    "Panels",
+    "Stackable"
+  ],
+  "author": "Tim Officer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/officert/vue-slideout-panel/issues"
+  },
+  "homepage": "https://github.com/officert/vue-slideout-panel#readme"
+}
