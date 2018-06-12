@@ -12,7 +12,7 @@
   <div id="app">
     {{ message }}
     <div>
-      <button class="btn btn-primary">HELLO</button>
+      <button class="btn btn-primary" v-on:click.prevent="sayHi">HELLO</button>
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
@@ -22,6 +22,11 @@
       el: '#app',
       data: {
         message: 'Hello Vue.js!'
+      },
+      methods: {
+        sayHi: function() {
+          vueSlideoutPanel.hello();
+        }
       }
     })
   </script>
