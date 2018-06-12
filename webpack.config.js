@@ -1,13 +1,16 @@
 const webpack = require('webpack');
 const UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const path = require('path');
 const env = require('yargs').argv.env; // use --env with webpack 2
 const pkg = require('./package.json');
 
 const libraryName = 'vue-slideout-panel';
 
-let plugins = [],
-  outputFile;
+let plugins = [
+  new ExtractTextPlugin(`${libraryName}.css`),
+];
+let outputFile;
 
 if (env === 'build') {
   plugins.push(new UglifyJsPlugin({
@@ -19,10 +22,12 @@ if (env === 'build') {
 }
 
 const config = {
-  entry: __dirname + '/src/index.js',
+  entry: [
+    __dirname + '/src/index.js'
+  ],
   devtool: 'source-map',
   output: {
-    path: __dirname + '/lib',
+    path: __dirname + '/dist',
     filename: outputFile,
     library: 'vueSlideoutPanel',
     libraryTarget: 'umd',
@@ -38,6 +43,17 @@ const config = {
         test: /(\.jsx|\.js)$/,
         loader: 'eslint-loader',
         exclude: /node_modules/
+      },
+      {
+        test: /\.less$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [{
+            loader: 'css-loader' // translates CSS into CommonJS
+          }, {
+            loader: 'less-loader' // compiles Less to CSS
+          }]
+        })
       }
     ]
   },
@@ -45,7 +61,7 @@ const config = {
     modules: [path.resolve('./node_modules'), path.resolve('./src')],
     extensions: ['.json', '.js']
   },
-  plugins: plugins
+  plugins
 };
 
 module.exports = config;
