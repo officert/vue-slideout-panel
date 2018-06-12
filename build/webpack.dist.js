@@ -6,9 +6,9 @@ const merge = require('deep-assign');
 const webpack = require('webpack');
 
 const options = require('./options');
-const base = require('./webpack.base.js');
+const baseConfig = require('./webpack.base.js');
 
-const config = merge(base, {
+const config = merge(baseConfig, {
   // without this, webpack throws in a polyfill for node.js's Buffer class
   node: {
     Buffer: false,

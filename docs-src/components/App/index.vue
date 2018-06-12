@@ -1,9 +1,4 @@
-<template>
-<div id="app" class="">
-  <div class="flex-fill flex flex-row">
-    <router-view class="flex-fill relative"></router-view>
-  </div>
-</div>
+<template src="./template.html">
 </template>
 
 <script>
@@ -18,9 +13,9 @@ export default {
 }
 </script>
 
-<style lang="less">
-html,
-body {
+<style>
+body,
+html {
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 100%;
 }

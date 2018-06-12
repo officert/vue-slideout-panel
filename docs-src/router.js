@@ -1,20 +1,20 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Basic from './Basic.vue';
+import Home from './components/Home';
 
 Vue.use(VueRouter);
 
 const routes = [{
     path: '*',
-    redirect: '/basic'
+    redirect: '/home'
   }, // catch all route to redirect 404s
   {
     path: '/',
-    redirect: '/basic'
+    redirect: '/home'
   },
   {
-    path: '/basic',
-    component: Basic
+    path: '/home',
+    component: Home
   }
 ];
 

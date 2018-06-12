@@ -4,11 +4,11 @@ const merge = require('deep-assign');
 const webpack = require('webpack');
 
 const options = require('./options');
-const base = require('./webpack.base.js');
+const baseConfig = require('./webpack.base.js');
 
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-const config = merge(base, {
+const config = merge(baseConfig, {
   entry: options.paths.resolve('docs-src/index.js'),
 
   output: {
