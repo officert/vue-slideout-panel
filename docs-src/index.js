@@ -1,11 +1,15 @@
 import Vue from 'vue';
 import App from './components/App';
+import Panel1 from './components/Panel1';
 import router from './router';
 
-const app = new Vue({
-  el: '#app',
-  // provide the router using the 'router' option.
-  // this will inject the router to make the whole app router-aware.
-  router,
-  render: h => h(App)
-});
+Vue.component('panel-1', Panel1);
+
+new Vue({
+    template: '<App></App>',
+    router,
+    components: {
+      App
+    }
+  })
+  .$mount('#app');

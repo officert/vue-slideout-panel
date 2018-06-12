@@ -4,11 +4,7 @@
 <style lang="less" src="./styles.less"></style>
 
 <script>
-// import jQuery from 'jquery';
-// import {
-//   mapState
-// } from 'vuex';
-// import * as mutationTypes from 'store/mutationTypes';
+import eventBus from '../../eventBus';
 
 const vm = {
   name: 'slideout-panel',
@@ -20,37 +16,33 @@ const vm = {
       panels: []
     };
   },
-  // computed: {
-  //   ...mapState({
-  //     panels: state => state.slideOutPanel.panels
-  //   })
-  // },
   methods: {
-    closePanel(data) {
+    onCloseComponent(data) {
+      this.closeCurrentPanel(data);
+    },
+    closeCurrentPanel(data) {
       const currentPanel = this.panels[this.panels.length - 1];
 
-      this.$store.dispatch('hideSlideOutPanel', {
+      eventBus.$emit(`hideSlideOutPanel-${currentPanel.id}`, {
         id: currentPanel.id,
         data
       });
-    },
-    closeAllPanels() {
-      const currentPanel = this.panels[this.panels.length - 1];
 
-      this.$store.dispatch('hideSlideOutPanel', {
-        id: currentPanel.id
-      });
+      const index = this.panels.indexOf(currentPanel);
+
+      this.panels.splice(index, 1);
+
+      if (!this.panels || this.panels.length === 0) {
+        this.onLastPanelDestroyed();
+      }
     },
-    onClosed() {
-      this.closeAllPanels();
+    onShowSlideOutPanel(payload) {
+      this.panels.push(payload);
+
+      if (!this.panels || this.panels.length === 1) {
+        this.onFirstPanelCreated();
+      }
     },
-    // onMutation(mutation) {
-    //   if (mutation.type === mutationTypes.SHOW_SLIDE_OUT_PANEL && (!this.panels || this.panels.length === 1)) {
-    //     this.onFirstPanelCreated();
-    //   } else if (mutation.type === mutationTypes.HIDE_SLIDE_OUT_PANEL && (!this.panels || this.panels.length === 0)) {
-    //     this.onLastPanelDestroyed();
-    //   }
-    // },
     onFirstPanelCreated() {
       this.visible = true;
 
@@ -73,18 +65,23 @@ const vm = {
 
       // jQuery('body').removeClass('modal-open');
     },
+    onBgClicked() {
+      console.log('bg clicked');
+    },
     onEscapeKeypress(e) {
       if (e.keyCode === 27) {
-        this.closeAllPanels();
+        console.log('esc clicked');
+
+        this.closeCurrentPanel();
       }
     }
+  },
+  created() {
+    eventBus.$on('showSlideOutPanel', this.onShowSlideOutPanel);
+  },
+  destroyed() {
+    eventBus.$off('showSlideOutPanel', this.onShowSlideOutPanel);
   }
-  // created() {
-  //   this.storeUnsubscribe = this.$store.subscribe(this.onMutation);
-  // },
-  // destroyed() {
-  //   this.storeUnsubscribe();
-  // }
 };
 
 export default vm;

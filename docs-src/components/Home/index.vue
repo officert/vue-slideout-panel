@@ -2,16 +2,23 @@
 </template>
 
 <script>
-import SlideoutPanel from '../../../src/components/SlideoutPanel';
+import slideOutPanelService from '../../../src/service';
 
 export default {
-  components: {
-    SlideoutPanel
-  },
+  name: 'home',
   data() {
     return {}
   },
-  methods: {}
+  methods: {
+    showPanel() {
+      slideOutPanelService.show({
+        component: 'panel-1',
+        props: {
+          name: 'John Doe'
+        }
+      });
+    }
+  }
 }
 </script>
 
