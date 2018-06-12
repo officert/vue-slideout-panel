@@ -67,6 +67,8 @@ const vm = {
     },
     onBgClicked() {
       console.log('bg clicked');
+
+      this.closeCurrentPanel();
     },
     onEscapeKeypress(e) {
       if (e.keyCode === 27) {

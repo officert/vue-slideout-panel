@@ -1,3 +1,22 @@
-<div class="panel-1">
-  {{ name }}
+<div id="panel-1">
+  <h1>Hey there, this is the first panel!</h1>
+  <p>
+    Here's the data that was passed to this panel:
+  </p>
+  <div class="data">
+    {{ data }}
+  </div>
+  <div class="form">
+    <form novalidate>
+      <div class="form-group">
+        <input type="text" class="form-control" v-model="form.name">
+      </div>
+    </form>
+  </div>
+  <button class="btn btn-default" v-on:click.prevent="closePanel">
+    Close Panel
+  </button>
+  <button class="btn btn-default" v-on:click.prevent="showPanel2">
+    Open Another Panel
+  </button>
 </div>

@@ -14,7 +14,11 @@ export default {
       slideOutPanelService.show({
         component: 'panel-1',
         props: {
-          name: 'John Doe'
+          data: {
+            firstName: 'John',
+            lastName: 'Doe',
+            age: 39
+          }
         }
       });
     }

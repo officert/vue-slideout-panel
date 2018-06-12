@@ -5,7 +5,7 @@
         <div class="slideout-wrapper" @click.stop v-if="(panels && panels.length) && panelsVisible">
           <transition-group name="slideInRight" tag="div">
             <div class="slideout" v-for="panel in panels" :key="panel.id">
-              <component :is="panel.component" v-bind="panel.props || {}" v-on:close="onCloseComponent"></component>
+              <component :is="panel.component" v-bind="panel.props || {}" v-on:closePanel="onCloseComponent"></component>
             </div>
           </transition-group>
         </div>
