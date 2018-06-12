@@ -19,7 +19,6 @@ const routes = [{
 ];
 
 export default new VueRouter({
-  //mode: 'history', // use HTML5 history
   base: '/vue-slideout-panel/',
   routes
 });

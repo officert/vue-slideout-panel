@@ -9,7 +9,7 @@
     "build:release": "NODE_ENV=production webpack --config build/webpack.dist.js",
     "build:docs": "webpack --config build/webpack.docs.js",
     "build": "npm run build:debug && npm run build:release && npm run build:docs",
-    "clean": "rimraf ./dist ./docs/docs.bundle.css ./docs/docs.bundle.js"
+    "clean": "rimraf ./dist ./docs/docs.css ./docs/docs.js"
   },
   "repository": {
     "type": "git",

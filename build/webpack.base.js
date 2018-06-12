@@ -23,7 +23,7 @@ module.exports = {
         loader: 'vue-loader',
         options: {
           loaders: {
-            less: 'vue-style-loader!css-loader!less-loader?indentedSyntax' // <style lang="less">
+            less: 'vue-style-loader!css-loader!less-loader' // <style lang="less">
           },
           postcss: [
             autoprefixer({

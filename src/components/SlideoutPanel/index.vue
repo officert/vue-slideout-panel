@@ -1,7 +1,7 @@
 <template src="./template.html">
 </template>
 
-<style src="./styles.less"></style>
+<style lang="less" src="./styles.less"></style>
 
 <script>
 // import jQuery from 'jquery';

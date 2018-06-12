@@ -11,7 +11,7 @@ const config = merge(base, {
   devtool: '#eval-source-map',
   entry: options.paths.resolve('docs-src/index.js'),
   output: {
-    filename: 'docs.bundle.js',
+    filename: 'docs.js',
     path: options.paths.output.docs
   },
   plugins: [
@@ -27,9 +27,9 @@ const config = merge(base, {
   }
 });
 
-// // First item in module.rules array is Vue
-// config.module.rules[0].options.loaders = {
-//   scss: 'vue-style-loader!css-loader!sass-loader'
-// };
+// First item in module.rules array is Vue
+config.module.rules[0].options.loaders = {
+  less: 'vue-style-loader!css-loader!less-loader'
+};
 
 module.exports = config;
