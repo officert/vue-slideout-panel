@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/officert/vue-slideout-panel/issues"
   },
-  "homepage": "https://github.com/officert/vue-slideout-panel#readme"
+  "homepage": "https://github.com/officert/vue-slideout-panel#readme",
+  "devDependencies": {
+    "webpack": "^4.12.0"
+  }
 }
