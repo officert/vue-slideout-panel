@@ -1,32 +1,32 @@
-.slide-out-panel {
+.slideout-panel {
   display: block;
   transition: opacity 0.15s;
 
   &.fadeIn-enter {
-    .slide-out-panel-bg {
+    .slideout-panel-bg {
       opacity: 0;
     }
   }
 
   &.fadeIn-enter-to {
-    .slide-out-panel-bg {
+    .slideout-panel-bg {
       opacity: 1;
     }
   }
 
   &.fadeIn-leave {
-    .slide-out-panel-bg {
+    .slideout-panel-bg {
       opacity: 1;
     }
   }
 
   &.fadeIn-leave-to {
-    .slide-out-panel-bg {
+    .slideout-panel-bg {
       opacity: 0;
     }
   }
 
-  .slide-out-panel-bg {
+  .slideout-panel-bg {
     position: fixed;
     z-index: 1000;
     top: 0;
@@ -37,7 +37,7 @@
     transition: opacity 0.4s ease;
     overflow-y: hidden;
 
-    .slide-out-wrapper {
+    .slideout-wrapper {
       width: 900px;
       height: 100%;
       position: absolute;
@@ -64,7 +64,7 @@
         transform: translateX(100%);
       }
 
-      .slide-out {
+      .slideout {
         height: 100%;
         width: 100%;
         position: absolute;
