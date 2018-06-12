@@ -654,6 +654,8 @@ var vm = {
     },
     onBgClicked: function onBgClicked() {
       console.log('bg clicked');
+
+      this.closeCurrentPanel();
     },
     onEscapeKeypress: function onEscapeKeypress(e) {
       if (e.keyCode === 27) {
@@ -11964,7 +11966,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_c(panel.component, _vm._b({
       tag: "component",
       on: {
-        "close": _vm.onCloseComponent
+        "closePanel": _vm.onCloseComponent
       }
     }, 'component', panel.props || {}, false))], 1)
   }))], 1) : _vm._e()])], 1)]) : _vm._e()])
