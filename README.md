@@ -1,4 +1,4 @@
-# vue-slideout-panel
+# vue2-slideout-panel
 > A stackable panel component for Vue.js
 
 [![npm version](https://badge.fury.io/js/vue2-slideout-panel.svg)](https://badge.fury.io/js/vue2-slideout-panel)
