@@ -32,7 +32,9 @@ export default {
       });
     },
     closePanel() {
-      this.$emit('closePanel');
+      this.$emit('closePanel', {
+        name: this.form.name
+      });
     }
   }
 }

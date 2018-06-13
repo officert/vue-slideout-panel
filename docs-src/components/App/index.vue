@@ -17,19 +17,43 @@ export default {
 }
 </script>
 
-<style>
-body,
-html {
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 100%;
+<style lang="less">
+button,
+input[type="submit"] {
+    display: inline-block;
+    vertical-align: middle;
+    background-color: #3b98ab;
+    border: 1px solid #3b98ab;
+    border-radius: 4px;
+    padding: 8px 12px;
+    font: 14px/18px Arial, Helverica, sans-serif;
+    color: #fff;
+    margin: 0;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    -webkit-transition: background-color 0.1s linear, color 0.1s linear, width 0.2s ease;
+    transition: background-color 0.1s linear, color 0.1s linear, width 0.2s ease;
 }
 
-html {
-  height: 100%;
+button[disabled],
+input[type="submit"][disabled] {
+    background: #a0d4de;
+    border-color: #a0d4de;
+    cursor: default;
 }
 
-body {
-  min-height: 100%;
-  overflow: hidden;
+button .promise-btn__spinner-wrapper {
+    display: inline-block;
+    margin: -8px 0;
+}
+
+button.hide-loader .hidden {
+    display: none;
+}
+
+.site-footer {
+    display: flex;
+    justify-content: space-between;
 }
 </style>

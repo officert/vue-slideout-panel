@@ -1,3 +1,5 @@
+import Promise from 'promise-polyfill';
+
 import eventBus from './eventBus';
 
 function generateGuid() {
