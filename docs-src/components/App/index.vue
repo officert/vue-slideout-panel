@@ -2,13 +2,8 @@
 </template>
 
 <script>
-import SlideoutPanel from '../../../src/components/SlideoutPanel';
-
 export default {
   name: 'app',
-  components: {
-    SlideoutPanel
-  },
   computed: {
     version() {
       return VERSION;

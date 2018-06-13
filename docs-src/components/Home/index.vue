@@ -2,7 +2,9 @@
 </template>
 
 <script>
-import slideOutPanelService from '../../../src/service';
+import {
+  vueSlideoutPanelService
+} from '../../../src/index';
 
 export default {
   name: 'home',
@@ -11,7 +13,7 @@ export default {
   },
   methods: {
     showPanel() {
-      slideOutPanelService.show({
+      vueSlideoutPanelService.show({
           // openOn: 'left',
           // width: 500,
           component: 'panel-1',

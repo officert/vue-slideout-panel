@@ -11,53 +11,78 @@
     <a href="https://github.com/officert/vue-slideout-panel/tarball/master" class="btn">Download .tar.gz</a>
   </section>
   <section class="main-content">
-    <h2>Features</h2>
-    <ul>
-      <li>Easy-to-use API</li>
-      <li>Works with any tag and even forms</li>
-      <li>Packaged with optional built-in spinner</li>
-      <li>Only 1.5KB minified and gzipped</li>
-      <li>ESM, CommonJS, UMD versions</li>
-    </ul>
     <h2>Installation</h2>
-    <div class="highlight"><pre class="highlight"><span class="no">import</span> Vue <span class="no">from</span> 'vue'
-<span class="no">import</span> VuePromiseBtn <span class="no">from</span> 'vue-promise-btn'
-
-// not required. Styles for built-in spinner
-<span class="no">import</span> 'vue-promise-btn/dist/vue-promise-btn.css'
-
-Vue.use(VuePromiseBtn) // or with global options:  Vue.use(VuePromiseBtn, {loader: '...'})</pre></div>
-    <h2>Quick Start</h2>
-    <p>Plugin syntax is extremely simple. Just add directive v-promise-btn to your button:</p>
-    <div class="highlight"><pre class="highlight"><code>&lt;button <span class="s1">v-promise-btn</span> @click="getData"&gt;Get Data&lt;/button&gt;</code></pre></div>
-    <p>Easily change single instance options:</p>
-    <div class="highlight"><pre class="highlight"><code>&lt;button <span class="s1">v-promise-btn="options"</span> @click="getData"&gt;Get Data&lt;/button&gt;</code></pre></div>
-    <blockquote><b>!!! Event handler should always return Promise</b></blockquote>
-    <h3>Examples</h3>
-    <p><button class="">Click handler<span class="promise-btn__spinner-wrapper hidden"><span data-v-39432f99="" class="spinner" style="border-top-color: rgb(52, 152, 219); width: 18px; height: 18px; border-width: 4px; animation-duration: 1s;"></span></span></button>&nbsp;&nbsp;&nbsp;
-      <button class="">Promise chain example <span style="display: none;">0</span><span class="promise-btn__spinner-wrapper hidden"><span data-v-39432f99="" class="spinner" style="border-top-color: rgb(52, 152, 219); width: 18px; height: 18px; border-width: 4px; animation-duration: 1s;"></span></span>
-        </button>
+    <p>
+      1) Register the Vue Slideout Panel Component:
     </p>
-    <div class="highlight"><pre class="highlight"><code>&lt;button <span class="s1">v-promise-btn</span> @click="asyncAction"&gt;Click handler&lt;/button&gt;</code></pre></div>
-    <p><button class="">With Prevent modifier<span class="promise-btn__spinner-wrapper hidden"><span data-v-39432f99="" class="spinner" style="border-top-color: rgb(52, 152, 219); width: 18px; height: 18px; border-width: 4px; animation-duration: 1s;"></span></span></button></p>
-    <div class="highlight"><pre class="highlight"><code>&lt;button <span class="s1">v-promise-btn</span> @click.prevent="asyncAction"&gt;With Prevent modifier&lt;/button&gt;</code></pre></div>
-    <p><button>Right mouse<span class="promise-btn__spinner-wrapper hidden"><span data-v-39432f99="" class="spinner" style="border-top-color: rgb(52, 152, 219); width: 18px; height: 18px; border-width: 4px; animation-duration: 1s;"></span></span></button></p>
-    <div class="highlight"><pre class="highlight"><code>&lt;button <span class="s1">v-promise-btn="{action: 'contextmenu'}"</span> @click.right="asyncAction"&gt;Right mouse&lt;/button&gt;</code></pre></div>
-    <p><button>Middle mouse <span class="promise-btn__spinner-wrapper hidden"><span data-v-39432f99="" class="spinner" style="border-top-color: rgb(52, 152, 219); width: 18px; height: 18px; border-width: 4px; animation-duration: 1s;"></span></span></button></p>
-    <div class="highlight"><pre class="highlight"><code>&lt;button <span class="s1">v-promise-btn="{action: 'mouseup'}"</span> @click.middle="asyncAction"&gt;Middle mouse&lt;/button&gt;</code></pre></div>
-    <p><button class="hide-loader">Loader as custom component<span class="promise-btn__spinner-wrapper hidden"><span>...</span></span></button></p>
-    <div class="highlight"><pre class="highlight"><code>&lt;button <span class="s1">v-promise-btn="{loader: CustomSpinnerComponent}"</span> @click="asyncAction"&gt;Loader as custom component&lt;/button&gt;</code></pre></div>
-    <p><button class="hide-loader">Loader as simple HTML<span class="promise-btn__spinner-wrapper hidden"><b>(HTML loader...)</b></span></button></p>
-    <div class="highlight"><pre class="highlight"><code>&lt;button <span class="s1">v-promise-btn="{loader: '&lt;b&gt;(HTML loader...)&lt;/b&gt;' }"</span> @click="asyncAction"&gt;Loader as custom component&lt;/button&gt;</code></pre></div>
-    <hr>
-    <form action="">
-      <p><button type="submit">Button Form Submit<span class="promise-btn__spinner-wrapper hidden"><span data-v-39432f99="" class="spinner" style="border-top-color: rgb(52, 152, 219); width: 18px; height: 18px; border-width: 4px; animation-duration: 1s;"></span></span></button></p>
-    </form>
-    <div class="highlight"><pre class="highlight"><code>&lt;form <span class="s1">v-promise-btn="{action: 'submit'}"</span> @submit.prevent="asyncAction"&gt;
-  &lt;button type="submit"&gt;Button Form Submit&lt;/button&gt;
-&lt;/form&gt;</code></pre></div>
+    <div class="highlight">
+      <pre class="highlight">import Vue from 'vue';
+import { VueSlideoutPanel } 'vue-slideout-panel';
+
+Vue.component('slideout-panel', VueSlideoutPanel);</pre>
+    </div>
+    <p>
+      2) Add the Vue Slideout Panel Component tag to your HTML:
+    </p>
+    <div class="highlight">
+      <pre class="highlight">&lt;slideout-panel&gt;&lt;/slideout-panel&gt;</pre>
+    </div>
+    <p>
+      3) Use the Vue Slideout Panel Service to launch a panel:
+    </p>
+    <div class="highlight">
+      <pre class="highlight">import { vueSlideoutPanelService } from 'vue-slideout-panel';
+
+vueSlideoutPanelService.show({
+  component : 'your-component-name',
+  props: {
+    //any data you want passed to your component
+  }
+})
+.then(result => {
+
+});
+      </pre>
+    </div>
+    <h2>Examples</h2>
+    <p>
+      Let's say we have a simple page component called 'home' and we want to lauch a panel from it:
+    </p>
+    <div class="highlight">
+      <pre class="highlight">import Vue from 'vue';
+import { vueSlideoutPanelService } 'vue-slideout-panel';
+
+export default {
+  name: 'home',
+  data() {
+    return {}
+  },
+  methods: {
+    showPanel() {
+      vueSlideoutPanelService.show({
+          component: 'panel-1',
+          props: {
+            data: {
+              firstName: 'John',
+              lastName: 'Doe',
+              age: 39
+            }
+          }
+        })
+        .then(results => {
+          console.log('Results for panel 1:', results);
+        });
+    }
+  }
+}</pre>
+    </div>
+    <p>
+      <button v-on:click.prevent="showPanel">
+        Show Panel
+      </button>
+    </p>
+    <pre v-show="">
+      
+    </pre>
   </section>
-  <!-- <button class="btn btn-primary" v-on:click.prevent="showPanel">
-    Show Panel
-  </button> -->
 </div>
