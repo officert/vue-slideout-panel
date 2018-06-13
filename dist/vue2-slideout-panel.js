@@ -1,5 +1,5 @@
 /*!
- * vue2-slideout-panel v0.3.0 (https://github.com/officert/vue-slideout-panel)
+ * vue2-slideout-panel v0.4.0 (https://github.com/officert/vue-slideout-panel)
  * (c) 2018 Tim Officer
  * Released under the MIT License.
  */
@@ -752,7 +752,7 @@ var vm = {
 
       document.addEventListener('keydown', this.onEscapeKeypress);
 
-      document.body.className += 'slideout-panel-open';
+      document.body.className += ' slideout-panel-open';
     },
     onLastPanelDestroyed: function onLastPanelDestroyed() {
       var _this2 = this;
