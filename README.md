@@ -16,5 +16,5 @@
 ### NPM
 
 ```bash
-npm install vue-slideout-panel --save-dev
+npm install vue2-slideout-panel --save-dev
 ```
