@@ -18,8 +18,6 @@ const config = merge(baseConfig, {
   output: {
     filename: options.isProduction ? 'vue2-slideout-panel.min.js' : 'vue2-slideout-panel.js',
     path: options.paths.output.main,
-    library: 'VueSlideoutPanel',
-    libraryExport: 'default',
     libraryTarget: 'umd'
   },
   plugins: [

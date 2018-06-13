@@ -8,10 +8,10 @@
 		module.exports = factory();
 	else if(typeof define === 'function' && define.amd)
 		define([], factory);
-	else if(typeof exports === 'object')
-		exports["VueSlideoutPanel"] = factory();
-	else
-		root["VueSlideoutPanel"] = factory();
+	else {
+		var a = factory();
+		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
+	}
 })(typeof self !== 'undefined' ? self : this, function() {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -12304,5 +12304,5 @@ Promise._unhandledRejectionFn = function _unhandledRejectionFn(err) {
 
 
 /***/ })
-/******/ ])["default"];
+/******/ ]);
 });
