@@ -13,6 +13,11 @@ export default {
 </script>
 
 <style lang="less">
+.btn-xl {
+  padding: 20px 30px;
+  font-size: 22px;
+}
+
 button,
 input[type="submit"] {
     display: inline-block;

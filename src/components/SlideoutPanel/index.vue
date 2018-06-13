@@ -49,7 +49,7 @@ const vm = {
     },
     onShowSlideOutPanel(panel) {
       panel.styles = {
-        'z-index' : this.panels.length + 100
+        'z-index': this.panels.length + 100
       };
 
       if (!panel.width) panel.styles.width = '900px';
@@ -70,7 +70,7 @@ const vm = {
 
       document.addEventListener('keydown', this.onEscapeKeypress);
 
-      // jQuery('body').addClass('modal-open');
+      document.body.className += 'slideout-panel-open';
     },
     onLastPanelDestroyed() {
       this.panelsVisible = false;
@@ -81,7 +81,7 @@ const vm = {
 
       document.removeEventListener('keydown', this.onEscapeKeypress);
 
-      // jQuery('body').removeClass('modal-open');
+      document.body.className = document.body.className.replace('slideout-panel-open', '');
     },
     onBgClicked() {
       console.log('bg clicked');

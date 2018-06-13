@@ -1,3 +1,7 @@
+.slideout-panel-open {
+  overflow: hidden;
+}
+
 .slideout-panel {
   display: block;
   transition: opacity 0.15s;
@@ -39,54 +43,58 @@
     z-index: 100;
   }
 
-  .slideout {
-    height: 100%;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    background: white;
-    transition: transform 0.18s ease-out;
+  .slideout-wrapper {
+    position: static;
 
-    &.open-on-left {
-      right: auto;
-      left: 0;
+    .slideout {
+      height: 100%;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      background: white;
+      transition: transform 0.18s ease-out;
+      overflow-y: auto;
 
-      &.slideIn-enter {
-        transform: translateX(-100%);
+      &.open-on-left {
+        right: auto;
+        left: 0;
+
+        &.slideIn-enter {
+          transform: translateX(-100%);
+        }
+
+        &.slideIn-enter-to {
+          transform: translateX(0);
+        }
+
+        &.slideIn-leave {
+          transform: translateX(0);
+        }
+
+        &.slideIn-leave-to {
+          transform: translateX(-100%);
+        }
       }
 
-      &.slideIn-enter-to {
-        transform: translateX(0);
-      }
+      &.open-on-right {
+        right: 0;
+        left: auto;
 
-      &.slideIn-leave {
-        transform: translateX(0);
-      }
+        &.slideIn-enter {
+          transform: translateX(100%);
+        }
 
-      &.slideIn-leave-to {
-        transform: translateX(-100%);
-      }
-    }
+        &.slideIn-enter-to {
+          transform: translateX(0);
+        }
 
-    &.open-on-right {
-      right: 0;
-      left: auto;
+        &.slideIn-leave {
+          transform: translateX(0);
+        }
 
-      &.slideIn-enter {
-        transform: translateX(100%);
-      }
-
-      &.slideIn-enter-to {
-        transform: translateX(0);
-      }
-
-      &.slideIn-leave {
-        transform: translateX(0);
-      }
-
-      &.slideIn-leave-to {
-        transform: translateX(100%);
+        &.slideIn-leave-to {
+          transform: translateX(100%);
+        }
       }
     }
   }

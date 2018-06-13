@@ -17,7 +17,7 @@ export default {
     }
   },
   methods: {
-    showPanel() {
+    showPanel1() {
       vueSlideoutPanelService.show({
           // openOn: 'left',
           // width: 500,
@@ -25,6 +25,15 @@ export default {
           props: {
             name: this.example1Form.name
           }
+        })
+        .then(results => {
+          this.example1Result = results;
+        });
+    },
+    showPanel3() {
+      vueSlideoutPanelService.show({
+          width: 700,
+          component: 'panel-3'
         })
         .then(results => {
           this.example1Result = results;
@@ -41,6 +50,7 @@ export default {
         text-align: center;
         background-color: #159957;
         background-image: linear-gradient(120deg, #9069FD, #0C94FD);
+        padding-bottom: 4rem;
 
         .logo {
             text-align: center;
@@ -56,6 +66,10 @@ export default {
                 position: relative;
                 top: 26px;
             }
+        }
+
+        .demo-btn {
+          margin-top: 40px;
         }
     }
 
