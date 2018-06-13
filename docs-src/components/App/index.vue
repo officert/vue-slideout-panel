@@ -17,8 +17,8 @@ button,
 input[type="submit"] {
     display: inline-block;
     vertical-align: middle;
-    background-color: #3b98ab;
-    border: 1px solid #3b98ab;
+    background-color: #0C94FD;
+    border: 1px solid #0C94FD;
     border-radius: 4px;
     padding: 8px 12px;
     font: 14px/18px Arial, Helverica, sans-serif;
