@@ -18,3 +18,7 @@
 ```bash
 npm install vue2-slideout-panel --save-dev
 ```
+
+### Contributing
+
+Pull requests are welcome, or open up an issue if you have ideas for additional functionality, new features or bugs.
