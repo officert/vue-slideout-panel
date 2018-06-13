@@ -1,6 +1,8 @@
 # vue-slideout-panel
 > A stackable panel component for Vue.js
 
+![npm](https://img.shields.io/npm/v/npm.svg)
+
 ## Documentation
 [https://officert.github.io/vue-slideout-panel](https://officert.github.io/vue-slideout-panel)
 
