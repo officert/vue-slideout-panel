@@ -1,15 +1,11 @@
 <transition name="fadeIn">
   <div class="slideout-panel clearfix" v-if="visible">
     <div class="slideout-panel-bg" v-on:click="onBgClicked">
-      <transition name="slideInRight">
-        <div class="slideout-wrapper" @click.stop v-if="(panels && panels.length) && panelsVisible">
-          <transition-group name="slideInRight" tag="div">
-            <div class="slideout" v-for="panel in panels" :key="panel.id">
-              <component :is="panel.component" v-bind="panel.props || {}" v-on:closePanel="onCloseComponent"></component>
-            </div>
-          </transition-group>
-        </div>
-      </transition>
     </div>
+    <transition-group name="slideIn">
+      <div class="slideout" :style="panel.styles" :class="getPanelClasses(panel)" v-if="panelsVisible" v-for="panel in panels" @click.stop :key="panel.id">
+        <component :is="panel.component" v-bind="panel.props || {}" v-on:closePanel="onCloseComponent"></component>
+      </div>
+    </transition-group>
   </div>
 </transition>

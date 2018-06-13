@@ -17,6 +17,17 @@ const vm = {
     };
   },
   methods: {
+    getPanelClasses(panel) {
+      const panelClasses = {};
+
+      if (panel.openOn === 'left') {
+        panelClasses['open-on-left'] = true;
+      } else {
+        panelClasses['open-on-right'] = true;
+      }
+
+      return panelClasses;
+    },
     onCloseComponent(data) {
       this.closeCurrentPanel(data);
     },
@@ -36,8 +47,15 @@ const vm = {
         this.onLastPanelDestroyed();
       }
     },
-    onShowSlideOutPanel(payload) {
-      this.panels.push(payload);
+    onShowSlideOutPanel(panel) {
+      panel.styles = {
+        'z-index' : this.panels.length + 100
+      };
+
+      if (!panel.width) panel.styles.width = '900px';
+      else if (!panel.width.endsWith || !panel.width.endsWith('px')) panel.styles.width = `${panel.width}px`;
+
+      this.panels.push(panel);
 
       if (!this.panels || this.panels.length === 1) {
         this.onFirstPanelCreated();

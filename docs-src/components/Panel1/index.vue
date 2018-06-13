@@ -22,6 +22,7 @@ export default {
   methods: {
     showPanel2() {
       slideOutPanelService.show({
+        // openOn: 'left',
         component: 'panel-2',
         props: {
           data: {
