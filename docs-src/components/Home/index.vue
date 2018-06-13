@@ -34,5 +34,31 @@ export default {
 </script>
 
 <style lang="less">
-#home {}
+#home {
+    .page-header {
+        color: #fff;
+        text-align: center;
+        background-color: #159957;
+        background-image: linear-gradient(120deg, #9069FD, #0C94FD);
+
+        .logo {
+            text-align: center;
+
+            img {
+                height: 80px;
+            }
+        }
+    }
+
+    .main-content {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            color: #0C94FD;
+        }
+    }
+}
 </style>
