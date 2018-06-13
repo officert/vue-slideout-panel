@@ -70,7 +70,7 @@ const vm = {
 
       document.addEventListener('keydown', this.onEscapeKeypress);
 
-      document.body.className += 'slideout-panel-open';
+      document.body.className += ' slideout-panel-open';
     },
     onLastPanelDestroyed() {
       this.panelsVisible = false;
