@@ -9,7 +9,9 @@ import {
 export default {
   name: 'home',
   data() {
-    return {}
+    return {
+      panel1Result: null
+    }
   },
   methods: {
     showPanel() {
@@ -26,7 +28,7 @@ export default {
           }
         })
         .then(results => {
-          console.log('Results for panel 1:', results);
+          this.panel1Result = results;
         });
     }
   }
@@ -43,9 +45,17 @@ export default {
 
         .logo {
             text-align: center;
+            height: 100px;
+            width: 100px;
+            margin: 0 auto;
+            border-radius: 100%;
+            background: white;
+            margin-bottom: 40px;
 
             img {
-                height: 80px;
+                height: 60px;
+                position: relative;
+                top: 26px;
             }
         }
     }

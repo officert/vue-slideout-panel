@@ -13,6 +13,9 @@ export default {
   methods: {
     closePanel() {
       this.$emit('close');
+    },
+    closePanel() {
+      this.$emit('closePanel');
     }
   }
 }

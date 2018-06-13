@@ -14,7 +14,7 @@
     <a href="https://github.com/officert/vue-slideout-panel/tarball/master" class="btn">Download .tar.gz</a>
   </section>
   <section class="main-content">
-    <h2>Installation</h2>
+    <h2 style="margin-top: 2rem">Installation</h2>
     <div class="highlight">
       <pre class="highlight">npm install vue-slideout-panel --save-dev</pre>
     </div>
@@ -87,12 +87,43 @@ export default {
 }</pre>
     </div>
     <p>
+      Here's the compoent that we want to live inside the panel:
+    </p>
+    <div class="highlight">
+      <pre class="highlight">import Vue from 'vue';
+import { vueSlideoutPanelService } 'vue-slideout-panel';
+
+export default {
+name: 'home',
+data() {
+return {}
+},
+methods: {
+showPanel() {
+  vueSlideoutPanelService.show({
+      component: 'panel-1',
+      props: {
+        data: {
+          firstName: 'John',
+          lastName: 'Doe',
+          age: 39
+        }
+      }
+    })
+    .then(results => {
+      console.log('Results for panel 1:', results);
+    });
+}
+}
+}</pre>
+    </div>
+    <p>
       <button v-on:click.prevent="showPanel">
         Show Panel
       </button>
     </p>
-    <pre v-show="">
-
+    <pre v-show="panel1Result">
+{{ panel1Result }}
     </pre>
   </section>
 </div>
