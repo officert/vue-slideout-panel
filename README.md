@@ -2,7 +2,7 @@
 > A stackable panel component for Vue.js
 
 ## Documentation
-[https://github.com/officert/vue-slideout-panel/](https://github.com/officert/vue-slideout-panel/)
+[https://officert.github.io/vue-slideout-panel](https://officert.github.io/vue-slideout-panel)
 
 ## Demo
 
