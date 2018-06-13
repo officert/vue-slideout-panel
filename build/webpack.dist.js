@@ -14,17 +14,14 @@ const config = merge(baseConfig, {
     Buffer: false,
     process: false
   },
-
   entry: options.paths.resolve('src/index.js'),
-
   output: {
-    filename: options.isProduction ? 'vue-slideoout-panel.min.js' : 'vue-slideoout-panel.js',
+    filename: options.isProduction ? 'vue2-slideout-panel.min.js' : 'vue2-slideout-panel.js',
     path: options.paths.output.main,
     library: 'VueSlideoutPanel',
     libraryExport: 'default',
     libraryTarget: 'umd'
   },
-
   plugins: [
     new webpack.BannerPlugin({
       banner: options.banner,
@@ -33,20 +30,10 @@ const config = merge(baseConfig, {
     }),
 
     new ExtractTextPlugin({
-      filename: options.isProduction ? 'vue-slideoout-panel.min.css' : 'vue-slideoout-panel.css'
+      filename: options.isProduction ? 'vue2-slideout-panel.min.css' : 'vue2-slideout-panel.css'
     })
   ]
-})
-
-/*
-// First item in module.rules array is Vue
-config.module.rules[0].options.loaders = {
-  scss: ExtractTextPlugin.extract({
-    loader: 'css-loader!sass-loader',
-    fallbackLoader: 'vue-style-loader'
-  })
-}
-*/
+});
 
 // debug and production
 config.plugins = config.plugins.concat([
@@ -59,7 +46,6 @@ config.plugins = config.plugins.concat([
 ])
 
 if (options.isProduction) {
-  // production only
   config.plugins = config.plugins.concat([
     // Set the production environment
     new webpack.DefinePlugin({
@@ -72,7 +58,7 @@ if (options.isProduction) {
         warnings: false
       }
     })
-  ])
-};
+  ]);
+}
 
 module.exports = config;

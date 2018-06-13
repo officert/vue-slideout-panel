@@ -6,7 +6,7 @@ import vueSlideoutPanelService from './service';
 //   Vue.component('vue-slideout-panel', VueSlideoutPanel)
 // }
 
-export default {
+export {
   VueSlideoutPanel,
   vueSlideoutPanelService
 };

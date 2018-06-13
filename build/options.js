@@ -5,8 +5,8 @@ const version = require('../package.json').version
 
 const banner =
   '/*!\n' +
-  ' * vue-grid v' + version + ' (https://github.com/dzwillia/vue-grid)\n' +
-  ' * (c) ' + new Date().getFullYear() + ' David Z. Williams\n' +
+  ' * vue2-slideout-panel v' + version + ' (https://github.com/officert/vue-slideout-panel)\n' +
+  ' * (c) ' + new Date().getFullYear() + ' Tim Officer\n' +
   ' * Released under the MIT License.\n' +
   ' */';
 

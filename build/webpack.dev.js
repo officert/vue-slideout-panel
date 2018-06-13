@@ -27,9 +27,4 @@ const config = merge(baseConfig, {
   }
 });
 
-// // First item in module.rules array is Vue
-// config.module.rules[0].options.loaders = {
-//   less: 'vue-style-loader!css-loader!less-loader'
-// };
-
 module.exports = config;

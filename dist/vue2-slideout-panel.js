@@ -1,6 +1,6 @@
 /*!
- * vue-grid v0.0.1 (https://github.com/dzwillia/vue-grid)
- * (c) 2018 David Z. Williams
+ * vue2-slideout-panel v0.3.0 (https://github.com/officert/vue-slideout-panel)
+ * (c) 2018 Tim Officer
  * Released under the MIT License.
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -205,6 +205,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.vueSlideoutPanelService = exports.VueSlideoutPanel = undefined;
 
 var _SlideoutPanel = __webpack_require__(4);
 
@@ -216,11 +217,8 @@ var _service2 = _interopRequireDefault(_service);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = {
-  VueSlideoutPanel: _SlideoutPanel2.default,
-  vueSlideoutPanelService: _service2.default
-};
-module.exports = exports['default'];
+exports.VueSlideoutPanel = _SlideoutPanel2.default;
+exports.vueSlideoutPanelService = _service2.default;
 
 /***/ }),
 /* 4 */
