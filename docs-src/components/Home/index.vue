@@ -10,7 +10,10 @@ export default {
   name: 'home',
   data() {
     return {
-      panel1Result: null
+      example1Form: {
+        name: ''
+      },
+      example1Result: null
     }
   },
   methods: {
@@ -20,19 +23,15 @@ export default {
           // width: 500,
           component: 'panel-1',
           props: {
-            data: {
-              firstName: 'John',
-              lastName: 'Doe',
-              age: 39
-            }
+            name: this.example1Form.name
           }
         })
         .then(results => {
-          this.panel1Result = results;
+          this.example1Result = results;
         });
     }
   }
-}
+};
 </script>
 
 <style lang="less">
@@ -68,6 +67,12 @@ export default {
         h5,
         h6 {
             color: #0C94FD;
+        }
+
+        .example-1 {
+            .result {
+                margin-top: 15px;
+            }
         }
     }
 }

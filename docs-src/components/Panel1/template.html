@@ -1,22 +1,24 @@
 <div id="panel-1">
-  <h1>Hey there, this is the first panel!</h1>
+  <h1 v-if="!name">You didn't enter your name!</h1>
+  <h1 v-if="name">Hey there, {{ name }}!</h1>
   <p>
-    Here's the data that was passed to this panel:
+    Want to see another panel stacked on top of this one?
   </p>
-  <div class="data">
-    {{ data }}
-  </div>
   <div class="form">
     <form novalidate>
       <div class="form-group">
-        <input type="text" class="form-control" v-model="form.name">
+        <label>Enter Your Age</label>
+        <input type="number" class="form-control" v-model="example1Form.age">
       </div>
     </form>
+    <button class="" v-on:click.prevent="showPanel2">
+      Open Another Panel
+    </button>
   </div>
+  <p>
+    Or you can close this panel
+  </p>
   <button class="" v-on:click.prevent="closePanel">
     Close Panel
-  </button>
-  <button class="" v-on:click.prevent="showPanel2">
-    Open Another Panel
   </button>
 </div>

@@ -9,15 +9,15 @@ import {
 export default {
   name: 'panel-1',
   props: {
-    data: {
-      type: Object,
+    name: {
+      type: String,
       required: true
     }
   },
   data() {
     return {
-      form: {
-        name: ''
+      example1Form: {
+        age: null
       }
     };
   },
@@ -27,19 +27,19 @@ export default {
         // openOn: 'left',
         component: 'panel-2',
         props: {
-          data: {
-            name: this.form.name
-          }
+          age: this.example1Form.age,
+          name: this.name
         }
       });
     },
     closePanel() {
       this.$emit('closePanel', {
-        name: this.form.name
+        age: this.example1Form.age,
+        name: this.name
       });
     }
   }
-}
+};
 </script>
 
 <style>

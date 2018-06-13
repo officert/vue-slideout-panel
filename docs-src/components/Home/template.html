@@ -52,9 +52,25 @@ vueSlideoutPanelService.show({
 .then(result => {
 
 });
-      </pre>
+</pre>
     </div>
     <h2>Examples</h2>
+    <div class="example-1">
+      <form>
+        <div class="form-group">
+          <label>Enter your name:</label>
+          <input class="form-control" v-model="example1Form.name" />
+        </div>
+      </form>
+      <button v-on:click.prevent="showPanel">
+        Show Panel
+      </button>
+      <div class="result">
+        <pre v-show="example1Result">
+  {{ example1Result }}
+  </pre>
+      </div>
+    </div>
     <p>
       Let's say we have a simple page component called 'home' and we want to lauch a panel from it:
     </p>
@@ -84,46 +100,34 @@ export default {
         });
     }
   }
-}</pre>
+};
+</pre>
     </div>
     <p>
       Here's the compoent that we want to live inside the panel:
     </p>
     <div class="highlight">
-      <pre class="highlight">import Vue from 'vue';
-import { vueSlideoutPanelService } 'vue-slideout-panel';
-
+      <pre class="highlight">
 export default {
-name: 'home',
-data() {
-return {}
-},
-methods: {
-showPanel() {
-  vueSlideoutPanelService.show({
-      component: 'panel-1',
-      props: {
-        data: {
-          firstName: 'John',
-          lastName: 'Doe',
-          age: 39
-        }
-      }
-    })
-    .then(results => {
-      console.log('Results for panel 1:', results);
-    });
-}
-}
-}</pre>
+  name: 'panel-1',
+  props: {
+    data: {
+      type: Object,
+      required: true
+    }
+  },
+  data() {
+    return {};
+  },
+  methods: {
+    closePanel() {
+      this.$emit('closePanel', {
+        name: this.form.name
+      });
+    }
+  }
+};
+</pre>
     </div>
-    <p>
-      <button v-on:click.prevent="showPanel">
-        Show Panel
-      </button>
-    </p>
-    <pre v-show="panel1Result">
-{{ panel1Result }}
-    </pre>
   </section>
 </div>

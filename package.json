@@ -27,10 +27,10 @@
   },
   "homepage": "https://github.com/officert/vue-slideout-panel#readme",
   "dependencies": {
-    "vue": "^2.5.16",
-    "vue-router": "^2.5.3"
+    "vue": "^2.5.16"
   },
   "devDependencies": {
+    "vue-router": "^2.5.3",
     "autoprefixer": "^6.7.7",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
