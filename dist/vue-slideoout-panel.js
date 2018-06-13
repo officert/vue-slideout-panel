@@ -266,7 +266,7 @@ exports = module.exports = __webpack_require__(7)(false);
 
 
 // module
-exports.push([module.i, ".slideout-panel{display:block;transition:opacity .15s}.slideout-panel.fadeIn-enter .slideout-panel-bg{opacity:0}.slideout-panel.fadeIn-enter-to .slideout-panel-bg,.slideout-panel.fadeIn-leave .slideout-panel-bg{opacity:1}.slideout-panel.fadeIn-leave-to .slideout-panel-bg{opacity:0}.slideout-panel .slideout-panel-bg{position:fixed;z-index:1000;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,.5);transition:opacity .4s ease;overflow-y:hidden;z-index:100}.slideout-panel .slideout{height:100%;width:100%;position:fixed;top:0;bottom:0;background:#fff;transition:transform .18s ease-out}.slideout-panel .slideout.open-on-left{right:auto;left:0}.slideout-panel .slideout.open-on-left.slideIn-enter{transform:translateX(-100%)}.slideout-panel .slideout.open-on-left.slideIn-enter-to,.slideout-panel .slideout.open-on-left.slideIn-leave{transform:translateX(0)}.slideout-panel .slideout.open-on-left.slideIn-leave-to{transform:translateX(-100%)}.slideout-panel .slideout.open-on-right{right:0;left:auto}.slideout-panel .slideout.open-on-right.slideIn-enter{transform:translateX(100%)}.slideout-panel .slideout.open-on-right.slideIn-enter-to,.slideout-panel .slideout.open-on-right.slideIn-leave{transform:translateX(0)}.slideout-panel .slideout.open-on-right.slideIn-leave-to{transform:translateX(100%)}", ""]);
+exports.push([module.i, ".slideout-panel-open{overflow:hidden}.slideout-panel{display:block;transition:opacity .15s}.slideout-panel.fadeIn-enter .slideout-panel-bg{opacity:0}.slideout-panel.fadeIn-enter-to .slideout-panel-bg,.slideout-panel.fadeIn-leave .slideout-panel-bg{opacity:1}.slideout-panel.fadeIn-leave-to .slideout-panel-bg{opacity:0}.slideout-panel .slideout-panel-bg{position:fixed;z-index:1000;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,.5);transition:opacity .4s ease;overflow-y:hidden;z-index:100}.slideout-panel .slideout-wrapper{position:static}.slideout-panel .slideout-wrapper .slideout{height:100%;position:fixed;top:0;bottom:0;background:#fff;transition:transform .18s ease-out;overflow-y:auto}.slideout-panel .slideout-wrapper .slideout.open-on-left{right:auto;left:0}.slideout-panel .slideout-wrapper .slideout.open-on-left.slideIn-enter{transform:translateX(-100%)}.slideout-panel .slideout-wrapper .slideout.open-on-left.slideIn-enter-to,.slideout-panel .slideout-wrapper .slideout.open-on-left.slideIn-leave{transform:translateX(0)}.slideout-panel .slideout-wrapper .slideout.open-on-left.slideIn-leave-to{transform:translateX(-100%)}.slideout-panel .slideout-wrapper .slideout.open-on-right{right:0;left:auto}.slideout-panel .slideout-wrapper .slideout.open-on-right.slideIn-enter{transform:translateX(100%)}.slideout-panel .slideout-wrapper .slideout.open-on-right.slideIn-enter-to,.slideout-panel .slideout-wrapper .slideout.open-on-right.slideIn-leave{transform:translateX(0)}.slideout-panel .slideout-wrapper .slideout.open-on-right.slideIn-leave-to{transform:translateX(100%)}", ""]);
 
 // exports
 
@@ -753,6 +753,8 @@ var vm = {
       }, 300);
 
       document.addEventListener('keydown', this.onEscapeKeypress);
+
+      document.body.className += 'slideout-panel-open';
     },
     onLastPanelDestroyed: function onLastPanelDestroyed() {
       var _this2 = this;
@@ -764,6 +766,8 @@ var vm = {
       }, 300);
 
       document.removeEventListener('keydown', this.onEscapeKeypress);
+
+      document.body.className = document.body.className.replace('slideout-panel-open', '');
     },
     onBgClicked: function onBgClicked() {
       console.log('bg clicked');
@@ -11967,7 +11971,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "click": _vm.onBgClicked
     }
   }), _vm._v(" "), _c('transition-group', {
+    staticClass: "slideout-wrapper",
     attrs: {
+      "tag": "div",
       "name": "slideIn"
     }
   }, _vm._l((_vm.panels), function(panel) {
