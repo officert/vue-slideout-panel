@@ -19,7 +19,8 @@ export default {
   methods: {
     showPanel1() {
       vueSlideoutPanelService.show({
-          width: '500px',
+          width: '700px',
+          cssClass: 'panel-1-custom-class',
           component: 'panel-1',
           props: {
             name: this.example1Form.name
@@ -68,7 +69,7 @@ export default {
         }
 
         .demo-btn {
-          margin-top: 40px;
+            margin-top: 40px;
         }
     }
 
@@ -88,5 +89,9 @@ export default {
             }
         }
     }
+}
+
+.panel-1-custom-class {
+  border: 1px solid red !important;
 }
 </style>

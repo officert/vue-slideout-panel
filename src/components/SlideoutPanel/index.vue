@@ -26,6 +26,8 @@ const vm = {
         panelClasses['open-on-right'] = true;
       }
 
+      if (panel.cssClass) panelClasses[panel.cssClass] = true;
+
       return panelClasses;
     },
     onCloseComponent(data) {

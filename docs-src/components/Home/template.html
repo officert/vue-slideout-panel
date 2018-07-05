@@ -94,6 +94,8 @@ export default {
     showPanel1() {
       vueSlideoutPanelService.show({
           component: 'panel-1',
+          width: '500px', //customize the width
+          cssClass: 'panel-1-custom-class', //add a custom CSS class
           props: {
             data: {
               firstName: 'John',
