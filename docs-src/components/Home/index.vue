@@ -19,8 +19,7 @@ export default {
   methods: {
     showPanel1() {
       vueSlideoutPanelService.show({
-          // openOn: 'left',
-          // width: 500,
+          width: '500px',
           component: 'panel-1',
           props: {
             name: this.example1Form.name

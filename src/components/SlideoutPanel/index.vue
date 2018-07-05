@@ -54,6 +54,7 @@ const vm = {
 
       if (!panel.width) panel.styles.width = '900px';
       else if (!panel.width.endsWith || !panel.width.endsWith('px')) panel.styles.width = `${panel.width}px`;
+      else panel.styles.width = panel.width;
 
       this.panels.push(panel);
 
