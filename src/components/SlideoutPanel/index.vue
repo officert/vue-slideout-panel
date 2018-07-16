@@ -43,6 +43,8 @@ const vm = {
 
       const index = this.panels.indexOf(currentPanel);
 
+      this.removePanelStylesheet(currentPanel);
+
       this.panels.splice(index, 1);
 
       if (!this.panels || this.panels.length === 0) {
@@ -58,11 +60,49 @@ const vm = {
       else if (!panel.width.endsWith || !panel.width.endsWith('px')) panel.styles.width = `${panel.width}px`;
       else panel.styles.width = panel.width;
 
+      panel.cssId = `slide-out-panel-${panel.id}`;
+      panel.stylesheetId = `slide-out-panel-styles-${panel.id}`;
+
+      this.createPanelStylesheet(panel);
+
       this.panels.push(panel);
 
       if (!this.panels || this.panels.length === 1) {
         this.onFirstPanelCreated();
       }
+    },
+    createPanelStylesheet(panel) {
+      const head = document.head || document.getElementsByTagName('head')[0];
+      const style = document.createElement('style');
+      style.type = 'text/css';
+
+      const css = `@media screen and (max-width:${panel.styles.width}) {
+        #${panel.cssId} {
+          width: 100% !important;
+        }
+      }`;
+
+      if (style.styleSheet) {
+        // This is required for IE8 and below.
+        style.styleSheet.cssText = css;
+      } else {
+        style.appendChild(document.createTextNode(css));
+      }
+
+      style.id = panel.stylesheetId;
+
+      head.appendChild(style);
+    },
+    removePanelStylesheet(panel) {
+      const stylesheetElements = document.querySelectorAll('link[rel=stylesheet]');
+
+      const stylesheet = document.getElementById(panel.stylesheetId);
+
+      stylesheetElements.forEach(sheet => {
+        try {
+          sheet.parentNode.removeChild(stylesheet);
+        } catch (err) {}
+      });
     },
     onFirstPanelCreated() {
       this.visible = true;
