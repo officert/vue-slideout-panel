@@ -1,5 +1,5 @@
 /*!
- * vue2-slideout-panel v0.4.0 (https://github.com/officert/vue-slideout-panel)
+ * vue2-slideout-panel v0.9.0 (https://github.com/officert/vue-slideout-panel)
  * (c) 2018 Tim Officer
  * Released under the MIT License.
  */
@@ -707,6 +707,8 @@ var vm = {
         panelClasses['open-on-right'] = true;
       }
 
+      if (panel.cssClass) panelClasses[panel.cssClass] = true;
+
       return panelClasses;
     },
     onCloseComponent: function onCloseComponent(data) {
@@ -722,6 +724,8 @@ var vm = {
 
       var index = this.panels.indexOf(currentPanel);
 
+      this.removePanelStylesheet(currentPanel);
+
       this.panels.splice(index, 1);
 
       if (!this.panels || this.panels.length === 0) {
@@ -733,13 +737,46 @@ var vm = {
         'z-index': this.panels.length + 100
       };
 
-      if (!panel.width) panel.styles.width = '900px';else if (!panel.width.endsWith || !panel.width.endsWith('px')) panel.styles.width = panel.width + 'px';
+      if (!panel.width) panel.styles.width = '900px';else if (!panel.width.endsWith || !panel.width.endsWith('px')) panel.styles.width = panel.width + 'px';else panel.styles.width = panel.width;
+
+      panel.cssId = 'slide-out-panel-' + panel.id;
+      panel.stylesheetId = 'slide-out-panel-styles-' + panel.id;
+
+      this.createPanelStylesheet(panel);
 
       this.panels.push(panel);
 
       if (!this.panels || this.panels.length === 1) {
         this.onFirstPanelCreated();
       }
+    },
+    createPanelStylesheet: function createPanelStylesheet(panel) {
+      var head = document.head || document.getElementsByTagName('head')[0];
+      var style = document.createElement('style');
+      style.type = 'text/css';
+
+      var css = '@media screen and (max-width:' + panel.styles.width + ') {\n        #' + panel.cssId + ' {\n          width: 100% !important;\n        }\n      }';
+
+      if (style.styleSheet) {
+        style.styleSheet.cssText = css;
+      } else {
+        style.appendChild(document.createTextNode(css));
+      }
+
+      style.id = panel.stylesheetId;
+
+      head.appendChild(style);
+    },
+    removePanelStylesheet: function removePanelStylesheet(panel) {
+      var stylesheetElements = document.querySelectorAll('link[rel=stylesheet]');
+
+      var stylesheet = document.getElementById(panel.stylesheetId);
+
+      stylesheetElements.forEach(function (sheet) {
+        try {
+          sheet.parentNode.removeChild(stylesheet);
+        } catch (err) {}
+      });
     },
     onFirstPanelCreated: function onFirstPanelCreated() {
       var _this = this;
@@ -11980,6 +12017,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "slideout",
       class: _vm.getPanelClasses(panel),
       style: (panel.styles),
+      attrs: {
+        "id": panel.cssId
+      },
       on: {
         "click": function($event) {
           $event.stopPropagation();
