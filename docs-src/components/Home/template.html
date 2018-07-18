@@ -138,5 +138,20 @@ export default {
 };
 </pre>
     </div>
+    <h2>Panel Options</h2>
+    <p>
+      The following options can be passed to <code>vueSlideoutPanelService.show()</code>.
+    </p>
+    <div class="highlight">
+      <pre class="highlight">
+vueSlideoutPanelService.show({
+  component: <span class="type">String</span>, //Vue.js Component name
+  width: <span class="type">String|Number</span>, //custom width
+  cssClass: <span class="type">String</span>, //custom css class to apply to the panel body
+  hideBg: <span class="type">Boolean</span>, //hide the backdrop - only works on the first panel, all subsequent panels will follow suit
+  props: <span class="type">Object</span> //object containing any data that you want passed to your Vue.js component as props
+})
+</pre>
+    </div>
   </section>
 </div>

@@ -1,5 +1,5 @@
 /*!
- * vue2-slideout-panel v0.9.0 (https://github.com/officert/vue-slideout-panel)
+ * vue2-slideout-panel v0.10.0 (https://github.com/officert/vue-slideout-panel)
  * (c) 2018 Tim Officer
  * Released under the MIT License.
  */
@@ -693,6 +693,7 @@ var vm = {
     return {
       visible: false,
       panelsVisible: false,
+      panelBgVisible: true,
       panels: []
     };
   },
@@ -790,6 +791,10 @@ var vm = {
       document.addEventListener('keydown', this.onEscapeKeypress);
 
       document.body.className += ' slideout-panel-open';
+
+      var firstPanel = this.panels[0];
+
+      if (firstPanel.hideBg) this.panelBgVisible = false;
     },
     onLastPanelDestroyed: function onLastPanelDestroyed() {
       var _this2 = this;
@@ -12000,12 +12005,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [(_vm.visible) ? _c('div', {
     staticClass: "slideout-panel clearfix"
-  }, [_c('div', {
+  }, [(_vm.panelBgVisible) ? _c('div', {
     staticClass: "slideout-panel-bg",
     on: {
       "click": _vm.onBgClicked
     }
-  }), _vm._v(" "), _c('transition-group', {
+  }) : _vm._e(), _vm._v(" "), _c('transition-group', {
     staticClass: "slideout-wrapper",
     attrs: {
       "tag": "div",

@@ -84,6 +84,18 @@ export default {
         }
 
         .example-1 {
+            .left-col {
+                float: left;
+                width: 50%;
+                padding-right: 10px;
+            }
+
+            .right-col {
+                float: right;
+                width: 50%;
+                padding-left: 10px;
+            }
+
             .result {
                 margin-top: 15px;
             }
@@ -92,6 +104,6 @@ export default {
 }
 
 .panel-1-custom-class {
-  border: 1px solid red !important;
+    border: 1px solid red !important;
 }
 </style>

@@ -14,8 +14,8 @@ export default {
 
 <style lang="less">
 .btn-xl {
-  padding: 20px 30px;
-  font-size: 22px;
+    padding: 20px 30px;
+    font-size: 22px;
 }
 
 button,
@@ -79,5 +79,19 @@ button.hide-loader .hidden {
     border: 1px solid #ced4da;
     border-radius: 0.25rem;
     transition: border-color 0.15s ease-in-out,box-shadow 0.15s ease-in-out;
+}
+
+.clearfix {
+    &::after {
+        display: block;
+        content: "";
+        clear: both;
+    }
+}
+
+.highlight {
+    .type {
+        color: #ef8181;
+    }
 }
 </style>

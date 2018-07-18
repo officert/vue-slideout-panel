@@ -1,6 +1,6 @@
 <transition name="fadeIn">
   <div class="slideout-panel clearfix" v-if="visible">
-    <div class="slideout-panel-bg" v-on:click="onBgClicked">
+    <div class="slideout-panel-bg" v-on:click="onBgClicked" v-if="panelBgVisible">
     </div>
     <transition-group class="slideout-wrapper" tag="div" name="slideIn">
       <div v-bind:id="panel.cssId" class="slideout" :style="panel.styles" :class="getPanelClasses(panel)" v-if="panelsVisible" v-for="panel in panels" @click.stop :key="panel.id">

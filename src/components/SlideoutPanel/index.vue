@@ -13,6 +13,7 @@ const vm = {
     return {
       visible: false,
       panelsVisible: false,
+      panelBgVisible: true,
       panels: []
     };
   },
@@ -114,6 +115,10 @@ const vm = {
       document.addEventListener('keydown', this.onEscapeKeypress);
 
       document.body.className += ' slideout-panel-open';
+
+      const firstPanel = this.panels[0];
+
+      if (firstPanel.hideBg) this.panelBgVisible = false;
     },
     onLastPanelDestroyed() {
       this.panelsVisible = false;
