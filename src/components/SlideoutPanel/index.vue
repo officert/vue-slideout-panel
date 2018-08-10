@@ -99,11 +99,12 @@ const vm = {
 
       const stylesheet = document.getElementById(panel.stylesheetId);
 
-      stylesheetElements.forEach(sheet => {
-        try {
-          sheet.parentNode.removeChild(stylesheet);
-        } catch (err) {}
-      });
+      for (var index = 0; index < stylesheetElements.length; index++) {
+                    var sheet = stylesheetElements[index];
+                    try {
+                        sheet.parentNode.removeChild(stylesheet);
+                    } catch (err) { }
+      }
     },
     onFirstPanelCreated() {
       this.visible = true;
