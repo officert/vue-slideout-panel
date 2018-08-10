@@ -100,10 +100,11 @@ const vm = {
       const stylesheet = document.getElementById(panel.stylesheetId);
 
       for (var index = 0; index < stylesheetElements.length; index++) {
-                    var sheet = stylesheetElements[index];
-                    try {
-                        sheet.parentNode.removeChild(stylesheet);
-                    } catch (err) { }
+        var sheet = stylesheetElements[index];
+
+        try {
+          sheet.parentNode.removeChild(stylesheet);
+        } catch (err) {}
       }
     },
     onFirstPanelCreated() {

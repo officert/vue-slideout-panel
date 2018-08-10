@@ -1,5 +1,5 @@
 /*!
- * vue2-slideout-panel v0.10.0 (https://github.com/officert/vue-slideout-panel)
+ * vue2-slideout-panel v0.11.0 (https://github.com/officert/vue-slideout-panel)
  * (c) 2018 Tim Officer
  * Released under the MIT License.
  */
@@ -773,11 +773,13 @@ var vm = {
 
       var stylesheet = document.getElementById(panel.stylesheetId);
 
-      stylesheetElements.forEach(function (sheet) {
+      for (var index = 0; index < stylesheetElements.length; index++) {
+        var sheet = stylesheetElements[index];
+
         try {
           sheet.parentNode.removeChild(stylesheet);
         } catch (err) {}
-      });
+      }
     },
     onFirstPanelCreated: function onFirstPanelCreated() {
       var _this = this;
