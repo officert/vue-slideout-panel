@@ -1,5 +1,5 @@
 /*!
- * vue2-slideout-panel v0.11.1 (https://github.com/officert/vue-slideout-panel)
+ * vue2-slideout-panel v0.12.0 (https://github.com/officert/vue-slideout-panel)
  * (c) 2018 Tim Officer
  * Released under the MIT License.
  */
