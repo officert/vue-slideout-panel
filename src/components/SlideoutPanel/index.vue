@@ -134,14 +134,10 @@ const vm = {
       document.body.className = document.body.className.replace('slideout-panel-open', '');
     },
     onBgClicked() {
-      console.log('bg clicked');
-
       this.closeCurrentPanel();
     },
     onEscapeKeypress(e) {
       if (e.keyCode === 27) {
-        console.log('esc clicked');
-
         this.closeCurrentPanel();
       }
     }
