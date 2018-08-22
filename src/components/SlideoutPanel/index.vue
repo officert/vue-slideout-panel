@@ -134,6 +134,10 @@ const vm = {
       document.body.className = document.body.className.replace('slideout-panel-open', '');
     },
     onBgClicked() {
+      const currentPanel = this.panels[this.panels.length - 1];
+
+      if (currentPanel.disableBgClick) return;
+
       this.closeCurrentPanel();
     },
     onEscapeKeypress(e) {
