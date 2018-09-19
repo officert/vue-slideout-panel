@@ -17,7 +17,8 @@ export default {
   data() {
     return {
       example1Form: {
-        age: null
+        age: null,
+        keepAlive: false
       }
     };
   },

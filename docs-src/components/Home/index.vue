@@ -13,28 +13,49 @@ export default {
       example1Form: {
         name: ''
       },
-      example1Result: null
+      example1Result: null,
+      panel1Handle: null
     }
   },
   methods: {
     showPanel1() {
-      vueSlideoutPanelService.show({
-          width: '700px',
-          cssClass: 'panel-1-custom-class',
-          component: 'panel-1',
+      if (this.panel1Handle) {
+        const newPanelResult = this.panel1Handle.show({
           props: {
             name: this.example1Form.name
           }
-        })
+        });
+
+        newPanelResult.promise
+          .then(results => {
+            this.example1Result = results;
+          });
+
+        return;
+      }
+
+      this.panel1Handle = vueSlideoutPanelService.show({
+        width: '700px',
+        cssClass: 'panel-1-custom-class',
+        component: 'panel-1',
+        keepAlive: true,
+        props: {
+          name: this.example1Form.name
+        }
+      });
+
+      this.panel1Handle.promise
         .then(results => {
           this.example1Result = results;
         });
     },
     showPanel3() {
-      vueSlideoutPanelService.show({
-          width: 700,
-          component: 'panel-3'
-        })
+      const handle = vueSlideoutPanelService.show({
+        width: 700,
+        component: 'panel-3'
+      });
+
+      handle.promise
         .then(results => {
           this.example1Result = results;
         });
