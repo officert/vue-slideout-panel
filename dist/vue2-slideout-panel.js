@@ -12098,6 +12098,8 @@ var vm = {
       this.closeCurrentPanel(data);
     },
     closeCurrentPanel: function closeCurrentPanel(data) {
+      if (!this.panels || !this.panels.length) return;
+
       var currentPanel = this.panels[this.panels.length - 1];
 
       this.closePanel(currentPanel, data);
@@ -12152,6 +12154,7 @@ var vm = {
       if (window.vue2PanelDebug) {
         console.log('panel.props', panel.props);
         console.log('panel.componentName', panel.componentName);
+        console.log('panel.template', panel.template);
       }
 
       if (!existingPanel) {
