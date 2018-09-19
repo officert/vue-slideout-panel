@@ -11394,7 +11394,7 @@ if (typeof window !== 'undefined' && window.Vue) {
   _vue2.default.component('slideout-panel', _SlideoutPanel2.default);
   _vue2.default.use({
     install: function install(RealVue) {
-      RealVue.showPanel = _service2.default.show;
+      RealVue.prototype.$showPanel = _service2.default.show;
     }
   });
 

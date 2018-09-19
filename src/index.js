@@ -10,7 +10,7 @@ if (typeof window !== 'undefined' && window.Vue) {
   Vue.component('slideout-panel', VueSlideoutPanel);
   Vue.use({
     install(RealVue) {
-      RealVue.showPanel = vueSlideoutPanelService.show;
+      RealVue.prototype.$showPanel = vueSlideoutPanelService.show;
     }
   });
 
