@@ -5,7 +5,12 @@ import vueSlideoutPanelService from './service';
 
 // expose component and service to global scope
 if (typeof window !== 'undefined' && window.Vue) {
-  Vue.component('vue-slideout-panel', VueSlideoutPanel);
+  Vue.component('slideout-panel', VueSlideoutPanel);
+  Vue.use({
+    install(RealVue) {
+      RealVue.showPanel = vueSlideoutPanelService.show;
+    }
+  });
 
   window.vueSlideoutPanelService = vueSlideoutPanelService;
 }
