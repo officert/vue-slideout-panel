@@ -9,12 +9,10 @@ module.exports = {
       options.paths.root,
       options.paths.resolve('node_modules')
     ],
-
     alias: {
       src: 'src',
       vue$: 'vue/dist/vue.common.js'
     },
-
     extensions: ['.js', '.json', '.vue', '.less']
   },
   module: {
