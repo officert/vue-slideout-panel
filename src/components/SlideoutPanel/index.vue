@@ -96,6 +96,7 @@ const vm = {
 
       if (window.vue2PanelDebug) {
         console.log('panel.props', panel.props);
+        console.log('panel.component', panel.component);
         console.log('panel.componentName', panel.componentName);
         console.log('panel.template', panel.template);
       }
