@@ -11389,6 +11389,8 @@ var _service2 = _interopRequireDefault(_service);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 if (typeof window !== 'undefined' && window.Vue) {
+  console.log('HEREEE');
+
   _vue2.default.component('slideout-panel', _SlideoutPanel2.default);
   _vue2.default.use({
     install: function install(RealVue) {
