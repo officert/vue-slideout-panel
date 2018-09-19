@@ -9,6 +9,8 @@ import Panel2 from './components/Panel2';
 import Panel3 from './components/Panel3';
 import router from './router';
 
+window.vue2PanelDebug = true;
+
 Vue.component('slideout-panel', VueSlideoutPanel);
 Vue.component('panel-1', Panel1);
 Vue.component('panel-2', Panel2);

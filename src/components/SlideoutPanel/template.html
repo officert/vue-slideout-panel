@@ -6,8 +6,8 @@
     </transition>
     <transition-group class="slideout-wrapper" tag="div" name="slideIn">
       <div :id="panel.cssId" class="slideout" :style="panel.styles" :class="getPanelClasses(panel)" v-show="panel.visible" v-for="panel in panels" @click.stop :key="panel.id">
-        <keep-alive :include="[panel.keepAlive ? panel.component : '']">
-          <component :is="panel.component" v-bind="panel.props || {}" v-on:closePanel="onCloseComponent"></component>
+        <keep-alive :include="[panel.keepAlive ? panel.componentName : '']">
+          <component :is="panel.componentName" v-bind="panel.props || {}" v-on:closePanel="onCloseComponent"></component>
         </keep-alive>
       </div>
     </transition-group>

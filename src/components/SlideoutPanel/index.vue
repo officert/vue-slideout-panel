@@ -8,6 +8,10 @@ import Vue from 'vue';
 
 import eventBus from '../../eventBus';
 
+function isString(val) {
+  return typeof val === 'string';
+}
+
 const vm = {
   name: 'slideout-panel',
   components: {},
@@ -70,8 +74,6 @@ const vm = {
     onShowSlideOutPanel(panel) {
       const existingPanel = this.panels.filter(p => p.id === panel.id)[0];
 
-      console.log('PROPS', panel.props);
-
       if (existingPanel) {
         existingPanel.props = panel.props;
         panel = existingPanel;
@@ -88,6 +90,12 @@ const vm = {
       panel.visible = true;
       panel.cssId = `slide-out-panel-${panel.id}`;
       panel.stylesheetId = `slide-out-panel-styles-${panel.id}`;
+      panel.componentName = isString(panel.component) ? panel.component : panel.component.name; //tuck away the actual component name
+
+      if (window.vue2PanelDebug) {
+        console.log('panel.props', panel.props);
+        console.log('panel.componentName', panel.componentName);
+      }
 
       if (!existingPanel) {
         this.createPanelStylesheet(panel);

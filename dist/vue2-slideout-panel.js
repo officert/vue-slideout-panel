@@ -1,5 +1,5 @@
 /*!
- * vue2-slideout-panel v1.0.0 (https://github.com/officert/vue-slideout-panel)
+ * vue2-slideout-panel v1.0.1 (https://github.com/officert/vue-slideout-panel)
  * (c) 2018 Tim Officer
  * Released under the MIT License.
  */
@@ -12060,6 +12060,10 @@ var _eventBus2 = _interopRequireDefault(_eventBus);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function isString(val) {
+  return typeof val === 'string';
+}
+
 var vm = {
   name: 'slideout-panel',
   components: {},
@@ -12129,8 +12133,6 @@ var vm = {
         return p.id === panel.id;
       })[0];
 
-      console.log('PROPS', panel.props);
-
       if (existingPanel) {
         existingPanel.props = panel.props;
         panel = existingPanel;
@@ -12145,6 +12147,12 @@ var vm = {
       panel.visible = true;
       panel.cssId = 'slide-out-panel-' + panel.id;
       panel.stylesheetId = 'slide-out-panel-styles-' + panel.id;
+      panel.componentName = isString(panel.component) ? panel.component : panel.component.name;
+
+      if (window.vue2PanelDebug) {
+        console.log('panel.props', panel.props);
+        console.log('panel.componentName', panel.componentName);
+      }
 
       if (!existingPanel) {
         this.createPanelStylesheet(panel);
@@ -12277,9 +12285,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }, [_c('keep-alive', {
       attrs: {
-        "include": [panel.keepAlive ? panel.component : '']
+        "include": [panel.keepAlive ? panel.componentName : '']
       }
-    }, [_c(panel.component, _vm._b({
+    }, [_c(panel.componentName, _vm._b({
       tag: "component",
       on: {
         "closePanel": _vm.onCloseComponent

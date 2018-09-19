@@ -1,6 +1,6 @@
 {
   "name": "vue2-slideout-panel",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Lib for creating stackable panels using Vue JS",
   "main": "dist/vue2-slideout-panel.js",
   "scripts": {
