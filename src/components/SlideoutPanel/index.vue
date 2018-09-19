@@ -4,6 +4,8 @@
 <style lang="less" src="./styles.less"></style>
 
 <script>
+import Vue from 'vue';
+
 import eventBus from '../../eventBus';
 
 const vm = {
@@ -11,11 +13,13 @@ const vm = {
   components: {},
   data() {
     return {
-      visible: false,
-      panelsVisible: false,
-      panelBgVisible: true,
       panels: []
     };
+  },
+  computed: {
+    panelsVisible() {
+      return this.panels.filter(panel => panel.visible).length;
+    }
   },
   methods: {
     getPanelClasses(panel) {
@@ -37,22 +41,42 @@ const vm = {
     closeCurrentPanel(data) {
       const currentPanel = this.panels[this.panels.length - 1];
 
-      eventBus.$emit(`hideSlideOutPanel-${currentPanel.id}`, {
-        id: currentPanel.id,
+      this.closePanel(currentPanel, data);
+    },
+    closePanel(panel, data) {
+      if (!panel) throw new Error('panel');
+
+      eventBus.$emit(`hideSlideOutPanel-${panel.id}`, {
+        id: panel.id,
         data
       });
 
-      const index = this.panels.indexOf(currentPanel);
+      panel.visible = false;
 
-      this.removePanelStylesheet(currentPanel);
-
-      this.panels.splice(index, 1);
-
-      if (!this.panels || this.panels.length === 0) {
-        this.onLastPanelDestroyed();
+      if (!this.panelsVisible) {
+        this.removeBodyClass();
       }
+
+      setTimeout(() => {
+        if (!panel.keepAlive) {
+          const index = this.panels.indexOf(panel);
+
+          this.removePanelStylesheet(panel);
+
+          this.panels.splice(index, 1);
+        }
+      }, 300); //NOTE: need to deply removing here to allow CSS animation on .slideout to finish
     },
     onShowSlideOutPanel(panel) {
+      const existingPanel = this.panels.filter(p => p.id === panel.id)[0];
+
+      console.log('PROPS', panel.props);
+
+      if (existingPanel) {
+        existingPanel.props = panel.props;
+        panel = existingPanel;
+      }
+
       panel.styles = {
         'z-index': this.panels.length + 100
       };
@@ -61,16 +85,20 @@ const vm = {
       else if (!panel.width.endsWith || !panel.width.endsWith('px')) panel.styles.width = `${panel.width}px`;
       else panel.styles.width = panel.width;
 
+      panel.visible = true;
       panel.cssId = `slide-out-panel-${panel.id}`;
       panel.stylesheetId = `slide-out-panel-styles-${panel.id}`;
 
-      this.createPanelStylesheet(panel);
+      if (!existingPanel) {
+        this.createPanelStylesheet(panel);
 
-      this.panels.push(panel);
-
-      if (!this.panels || this.panels.length === 1) {
-        this.onFirstPanelCreated();
+        this.panels.push(panel);
       }
+
+      this.addBodyClass();
+    },
+    onHideSlideOutPanel(panel) {
+      this.closeCurrentPanel(panel);
     },
     createPanelStylesheet(panel) {
       const head = document.head || document.getElementsByTagName('head')[0];
@@ -107,30 +135,16 @@ const vm = {
         } catch (err) {}
       }
     },
-    onFirstPanelCreated() {
-      this.visible = true;
-
-      setTimeout(() => {
-        this.panelsVisible = true;
-      }, 300);
-
-      document.addEventListener('keydown', this.onEscapeKeypress);
-
-      document.body.className += ' slideout-panel-open';
-
-      const firstPanel = this.panels[0];
-
-      if (firstPanel.hideBg) this.panelBgVisible = false;
+    addBodyClass() {
+      if (document.body.className.indexOf('slideout-panel-open') < 0) {
+        if (document.body.className === '') {
+          document.body.className += 'slideout-panel-open';
+        } else {
+          document.body.className += ' slideout-panel-open';
+        }
+      }
     },
-    onLastPanelDestroyed() {
-      this.panelsVisible = false;
-
-      setTimeout(() => {
-        this.visible = false;
-      }, 300);
-
-      document.removeEventListener('keydown', this.onEscapeKeypress);
-
+    removeBodyClass() {
       document.body.className = document.body.className.replace('slideout-panel-open', '');
     },
     onBgClicked() {
@@ -147,10 +161,16 @@ const vm = {
     }
   },
   created() {
+    document.addEventListener('keydown', this.onEscapeKeypress);
+
     eventBus.$on('showSlideOutPanel', this.onShowSlideOutPanel);
+    eventBus.$on('hideSlideOutPanel', this.onHideSlideOutPanel);
   },
   destroyed() {
+    document.removeEventListener('keydown', this.onEscapeKeypress);
+
     eventBus.$off('showSlideOutPanel', this.onShowSlideOutPanel);
+    eventBus.$off('hideSlideOutPanel', this.onHideSlideOutPanel);
   }
 };
 
