@@ -71,7 +71,7 @@ const vm = {
 
           this.panels.splice(index, 1);
         }
-      }, 300); //NOTE: need to deply removing here to allow CSS animation on .slideout to finish
+      }, 300); //NOTE: need to delay removing here to allow CSS animation on .slideout to finish
     },
     onShowSlideOutPanel(panel) {
       const existingPanel = this.panels.filter(p => p.id === panel.id)[0];
@@ -92,13 +92,13 @@ const vm = {
       panel.visible = true;
       panel.cssId = `slide-out-panel-${panel.id}`;
       panel.stylesheetId = `slide-out-panel-styles-${panel.id}`;
+      panel.inlineComponent = !isString(panel.component);
       panel.componentName = isString(panel.component) ? panel.component : panel.component.name; //tuck away the actual component name
 
       if (window.vue2PanelDebug) {
         console.log('panel.props', panel.props);
         console.log('panel.component', panel.component);
         console.log('panel.componentName', panel.componentName);
-        console.log('panel.template', panel.template);
       }
 
       if (!existingPanel) {

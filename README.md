@@ -4,11 +4,11 @@
 [![npm version](https://badge.fury.io/js/vue2-slideout-panel.svg)](https://badge.fury.io/js/vue2-slideout-panel)
 
 ## Documentation
-[https://officert.github.io/vue-slideout-panel](https://officert.github.io/vue-slideout-panel)
+[https://vue2-slideout-panel.wrkflows.io/en/articles/1004](https://vue2-slideout-panel.wrkflows.io/en/articles/1004)
 
 ## Demo
 
-[https://officert.github.io/vue-slideout-panel](https://officert.github.io/vue-slideout-panel)
+[https://vue2-slideout-panel.wrkflows.io/en/articles/1004](https://vue2-slideout-panel.wrkflows.io/en/articles/1004)
 
 ## Requirements
 * [Vue.js](http://vuejs.org/) (^v2.1.4)
