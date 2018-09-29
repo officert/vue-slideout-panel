@@ -1,3 +1,5 @@
+import Vue from 'vue';
+
 import VueSlideoutPanel from './components/SlideoutPanel';
 import vueSlideoutPanelService from './service';
 
@@ -11,6 +13,12 @@ if (typeof window !== 'undefined' && window.Vue) {
   });
 
   window.vueSlideoutPanelService = vueSlideoutPanelService;
+} else {
+  Vue.use({
+    install(NewVue) {
+      NewVue.prototype.$showPanel = vueSlideoutPanelService.show;
+    }
+  });
 }
 
 export {
