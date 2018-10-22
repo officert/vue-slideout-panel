@@ -2,10 +2,6 @@
 </template>
 
 <script>
-import {
-  vueSlideoutPanelService
-} from '../../../src/index';
-
 export default {
   name: 'panel-1',
   props: {
@@ -24,7 +20,7 @@ export default {
   },
   methods: {
     showPanel2() {
-      vueSlideoutPanelService.show({
+      this.$showPanel({
         // openOn: 'left',
         component: 'panel-2',
         props: {

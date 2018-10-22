@@ -2,10 +2,6 @@
 </template>
 
 <script>
-import {
-  vueSlideoutPanelService
-} from '../../../src/index';
-
 export default {
   name: 'home',
   data() {
@@ -34,7 +30,7 @@ export default {
         return;
       }
 
-      this.panel1Handle = vueSlideoutPanelService.show({
+      this.panel1Handle = this.$showPanel({
         width: '700px',
         cssClass: 'panel-1-custom-class',
         component: 'panel-1',
@@ -50,7 +46,7 @@ export default {
         });
     },
     showPanel3() {
-      const handle = vueSlideoutPanelService.show({
+      const handle = this.$showPanel({
         width: 700,
         component: 'panel-3'
       });

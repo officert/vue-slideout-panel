@@ -23,6 +23,9 @@ const vm = {
   computed: {
     panelsVisible() {
       return this.panels.filter(panel => panel.visible).length;
+    },
+    panelBgVisible() {
+      return this.panels.filter(panel => panel.hideBg).length === 0;
     }
   },
   methods: {
