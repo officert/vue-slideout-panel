@@ -160,6 +160,7 @@ const vm = {
       }
     },
     removeBodyClass() {
+      document.body.className = document.body.className.replace(' slideout-panel-open', '');
       document.body.className = document.body.className.replace('slideout-panel-open', '');
     },
     onBgClicked() {
