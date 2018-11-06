@@ -1,5 +1,5 @@
 /*!
- * vue2-slideout-panel v1.0.5 (https://github.com/officert/vue-slideout-panel)
+ * vue2-slideout-panel v1.0.7 (https://github.com/officert/vue-slideout-panel)
  * (c) 2018 Tim Officer
  * Released under the MIT License.
  */
@@ -11389,9 +11389,9 @@ var _service2 = _interopRequireDefault(_service);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 if (typeof window !== 'undefined' && window.Vue) {
-  window.Vue.component('slideout-panel', _SlideoutPanel2.default);
   window.Vue.use({
     install: function install(Vue) {
+      Vue.component('slideout-panel', _SlideoutPanel2.default);
       Vue.prototype.$showPanel = _service2.default.show;
     }
   });
@@ -11400,6 +11400,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 } else {
   _vue2.default.use({
     install: function install(NewVue) {
+      NewVue.component('slideout-panel', _SlideoutPanel2.default);
       NewVue.prototype.$showPanel = _service2.default.show;
     }
   });
@@ -12225,6 +12226,7 @@ var vm = {
       }
     },
     removeBodyClass: function removeBodyClass() {
+      document.body.className = document.body.className.replace(' slideout-panel-open', '');
       document.body.className = document.body.className.replace('slideout-panel-open', '');
     },
     onBgClicked: function onBgClicked() {
