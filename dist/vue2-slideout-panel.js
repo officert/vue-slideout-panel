@@ -12169,12 +12169,6 @@ var vm = {
       panel.inlineComponent = !isString(panel.component);
       panel.componentName = isString(panel.component) ? panel.component : panel.component.name;
 
-      if (window.vue2PanelDebug) {
-        console.log('panel.props', panel.props);
-        console.log('panel.component', panel.component);
-        console.log('panel.componentName', panel.componentName);
-      }
-
       if (!existingPanel) {
         this.createPanelStylesheet(panel);
 

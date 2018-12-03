@@ -7,6 +7,7 @@
 import Vue from 'vue';
 
 import eventBus from '../../eventBus';
+import domUtils from '../../domUtils';
 
 function isString(val) {
   return typeof val === 'string';
@@ -151,17 +152,10 @@ const vm = {
       }
     },
     addBodyClass() {
-      if (document.body.className.indexOf('slideout-panel-open') < 0) {
-        if (document.body.className === '') {
-          document.body.className += 'slideout-panel-open';
-        } else {
-          document.body.className += ' slideout-panel-open';
-        }
-      }
+      domUtils.addClass(document.body, 'slideout-panel-open');
     },
     removeBodyClass() {
-      document.body.className = document.body.className.replace(' slideout-panel-open', '');
-      document.body.className = document.body.className.replace('slideout-panel-open', '');
+      domUtils.removeClass(document.body, 'slideout-panel-open');
     },
     onBgClicked() {
       const currentPanel = this.panels[this.panels.length - 1];

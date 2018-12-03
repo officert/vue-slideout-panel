@@ -6,9 +6,9 @@ import vueSlideoutPanelService from './service';
 // expose component and service to global scope
 if (typeof window !== 'undefined' && window.Vue) {
   window.Vue.use({
-    install(Vue) {
-      Vue.component('slideout-panel', VueSlideoutPanel);
-      Vue.prototype.$showPanel = vueSlideoutPanelService.show;
+    install(NewVue) {
+      NewVue.component('slideout-panel', VueSlideoutPanel);
+      NewVue.prototype.$showPanel = vueSlideoutPanelService.show;
     }
   });
 
