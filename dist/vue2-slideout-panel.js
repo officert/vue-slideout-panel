@@ -1,5 +1,5 @@
 /*!
- * vue2-slideout-panel v2.0.0 (https://github.com/officert/vue-slideout-panel)
+ * vue2-slideout-panel v2.1.0 (https://github.com/officert/vue-slideout-panel)
  * (c) 2018 Tim Officer
  * Released under the MIT License.
  */
@@ -11452,7 +11452,7 @@ exports = module.exports = __webpack_require__(20)(false);
 
 
 // module
-exports.push([module.i, ".slideout-panel-open{overflow:hidden}.slideout-panel{display:block;transition:opacity .15s}.slideout-panel .slideout-panel-bg{position:fixed;z-index:1000;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,.5);transition:opacity .3s ease;overflow-y:hidden;z-index:100}.slideout-panel .slideout-panel-bg.fadeIn-enter{opacity:0}.slideout-panel .slideout-panel-bg.fadeIn-enter-to,.slideout-panel .slideout-panel-bg.fadeIn-leave{opacity:1}.slideout-panel .slideout-panel-bg.fadeIn-leave-to{opacity:0}.slideout-panel .slideout-panel-bg.fadeIn-leave-active{transition-delay:.4s}.slideout-panel .slideout-wrapper{position:static}.slideout-panel .slideout-wrapper .slideout{height:100%;position:fixed;top:0;bottom:0;background:#fff;transition:transform .18s ease-out;overflow-y:auto;transition-delay:.2s}.slideout-panel .slideout-wrapper .slideout.open-on-left{right:auto;left:0}.slideout-panel .slideout-wrapper .slideout.open-on-left.slideIn-enter{transform:translateX(-100%)}.slideout-panel .slideout-wrapper .slideout.open-on-left.slideIn-enter-to,.slideout-panel .slideout-wrapper .slideout.open-on-left.slideIn-leave{transform:translateX(0)}.slideout-panel .slideout-wrapper .slideout.open-on-left.slideIn-leave-to{transform:translateX(-100%)}.slideout-panel .slideout-wrapper .slideout.open-on-left.slideIn-leave-active{transition-delay:0}.slideout-panel .slideout-wrapper .slideout.open-on-right{right:0;left:auto}.slideout-panel .slideout-wrapper .slideout.open-on-right.slideIn-enter{transform:translateX(100%)}.slideout-panel .slideout-wrapper .slideout.open-on-right.slideIn-enter-to,.slideout-panel .slideout-wrapper .slideout.open-on-right.slideIn-leave{transform:translateX(0)}.slideout-panel .slideout-wrapper .slideout.open-on-right.slideIn-leave-to{transform:translateX(100%)}", ""]);
+exports.push([module.i, ".slideout-panel-open{overflow:hidden}.slideout-panel{display:block;transition:opacity .15s}.slideout-panel .slideout-panel-bg{position:fixed;z-index:1000;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,.5);transition:opacity .3s ease;overflow-y:hidden;z-index:100}.slideout-panel .slideout-panel-bg.transparent{background-color:transparent}.slideout-panel .slideout-panel-bg.fadeIn-enter{opacity:0}.slideout-panel .slideout-panel-bg.fadeIn-enter-to,.slideout-panel .slideout-panel-bg.fadeIn-leave{opacity:1}.slideout-panel .slideout-panel-bg.fadeIn-leave-to{opacity:0}.slideout-panel .slideout-panel-bg.fadeIn-leave-active{transition-delay:.4s}.slideout-panel .slideout-wrapper{position:static}.slideout-panel .slideout-wrapper .slideout{height:100%;position:fixed;top:0;bottom:0;background:#fff;transition:transform .18s ease-out;overflow-y:auto;transition-delay:.2s}.slideout-panel .slideout-wrapper .slideout.open-on-left{right:auto;left:0}.slideout-panel .slideout-wrapper .slideout.open-on-left.slideIn-enter{transform:translateX(-100%)}.slideout-panel .slideout-wrapper .slideout.open-on-left.slideIn-enter-to,.slideout-panel .slideout-wrapper .slideout.open-on-left.slideIn-leave{transform:translateX(0)}.slideout-panel .slideout-wrapper .slideout.open-on-left.slideIn-leave-to{transform:translateX(-100%)}.slideout-panel .slideout-wrapper .slideout.open-on-left.slideIn-leave-active{transition-delay:0}.slideout-panel .slideout-wrapper .slideout.open-on-right{right:0;left:auto}.slideout-panel .slideout-wrapper .slideout.open-on-right.slideIn-enter{transform:translateX(100%)}.slideout-panel .slideout-wrapper .slideout.open-on-right.slideIn-enter-to,.slideout-panel .slideout-wrapper .slideout.open-on-right.slideIn-leave{transform:translateX(0)}.slideout-panel .slideout-wrapper .slideout.open-on-right.slideIn-leave-to{transform:translateX(100%)}", ""]);
 
 // exports
 
@@ -12297,8 +12297,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "name": "fadeIn"
     }
-  }, [(_vm.panelsVisible && _vm.panelBgVisible) ? _c('div', {
+  }, [(_vm.panelsVisible) ? _c('div', {
     staticClass: "slideout-panel-bg",
+    class: {
+      'transparent': !_vm.panelBgVisible
+    },
     on: {
       "click": _vm.onBgClicked
     }
