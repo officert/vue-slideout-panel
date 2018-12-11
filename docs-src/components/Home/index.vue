@@ -31,6 +31,7 @@ export default {
       }
 
       this.panel1Handle = this.$showPanel({
+        hideBg: true,
         width: '700px',
         cssClass: 'panel-1-custom-class',
         component: 'panel-1',
