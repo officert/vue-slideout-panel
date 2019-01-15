@@ -1,6 +1,6 @@
 'use strict'
 
-const merge = require('deep-assign');
+const merge = require('webpack-merge');
 const webpack = require('webpack');
 
 const options = require('./options');
@@ -25,6 +25,14 @@ const config = merge(baseConfig, {
     historyApiFallback: true,
     noInfo: true
   }
+});
+
+config.module.rules.push({
+  test: /\.css$/,
+  use: [
+    'vue-style-loader',
+    'css-loader'
+  ]
 });
 
 module.exports = config;

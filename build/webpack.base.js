@@ -1,7 +1,8 @@
-'use strict'
+'use strict';
 
 const options = require('./options');
 const autoprefixer = require('autoprefixer');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
   resolve: {
@@ -20,9 +21,6 @@ module.exports = {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: {
-          loaders: {
-            less: 'vue-style-loader!css-loader!less-loader' // <style lang="less">
-          },
           postcss: [
             autoprefixer({
               browsers: ['last 2 versions', 'ie > 9', 'Firefox ESR']
@@ -31,10 +29,21 @@ module.exports = {
         }
       },
       {
+        test: /\.less$/,
+        use: [
+          'vue-style-loader',
+          'css-loader',
+          'less-loader'
+        ]
+      },
+      {
         test: /\.js$/,
         loader: 'babel-loader',
         exclude: /node_modules/
       }
     ]
-  }
+  },
+  plugins: [
+    new VueLoaderPlugin(),
+  ]
 };
