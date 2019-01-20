@@ -1,7 +1,7 @@
 'use strict'
 
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const TerserPlugin = require('terser-webpack-plugin');
 
 const merge = require('webpack-merge');
 const webpack = require('webpack');
@@ -23,16 +23,16 @@ const config = merge(baseConfig, {
   },
   optimization: {
     minimizer: [
-      new UglifyJsPlugin({
-        sourceMap: true,
-        parallel: 4,
-        uglifyOptions: {
-          warnings: false,
-          compress: {
-            warnings: false
-          },
-        },
-      })
+      new TerserPlugin({
+        terserOptions: {
+          ecma: 6,
+          compress: true,
+          output: {
+            comments: false,
+            beautify: false
+          }
+        }
+      }),
     ]
   },
   plugins: [

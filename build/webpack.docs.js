@@ -7,7 +7,7 @@ const options = require('./options');
 const baseConfig = require('./webpack.base.js');
 
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const TerserPlugin = require('terser-webpack-plugin');
 
 const config = merge(baseConfig, {
   entry: options.paths.resolve('docs-src/index.js'),
@@ -19,21 +19,21 @@ const config = merge(baseConfig, {
 
   optimization: {
     minimizer: [
-      new UglifyJsPlugin({
-        sourceMap: true,
-        parallel: 4,
-        uglifyOptions: {
-          warnings: false,
-          compress: {
-            warnings: false
-          },
-        },
-      })
+      new TerserPlugin({
+        terserOptions: {
+          ecma: 6,
+          compress: true,
+          output: {
+            comments: false,
+            beautify: false
+          }
+        }
+      }),
     ]
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'docs.css'
+      filename: 'docs.css',
     }),
 
     new webpack.LoaderOptionsPlugin({
@@ -48,12 +48,15 @@ const config = merge(baseConfig, {
   ]
 });
 
+config.module.rules[0].options.loaders = {
+  less: 'vue-style-loader!css-loader!less-loader'
+};
 config.module.rules.push({
-  test: /\.css$/,
-  use: [
-    MiniCssExtractPlugin.loader,
-    'css-loader'
-  ]
+    test: /\.css$/,
+    use: [
+      'vue-style-loader',
+      'css-loader'
+    ]
 });
 
 module.exports = config;
