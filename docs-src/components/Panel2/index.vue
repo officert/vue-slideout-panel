@@ -26,6 +26,4 @@ export default {
 #panel-1 {
   padding: 40px;
 }
-
-#panel-1 .data {}
 </style>
