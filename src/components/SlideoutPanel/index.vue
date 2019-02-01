@@ -43,9 +43,6 @@ const vm = {
 
       return panelClasses;
     },
-    onCloseComponent(data) {
-      this.closeCurrentPanel(data);
-    },
     closeCurrentPanel(data) {
       if (!this.panels || !this.panels.length) return;
 
