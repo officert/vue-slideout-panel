@@ -81,6 +81,60 @@
         }
       }
 
+      &.open-on-top {
+        right: 0;
+        left: 0;
+        bottom: auto;
+        top: 0;
+
+        &.slideIn-enter {
+          transform: translateY(-100%);
+        }
+
+        &.slideIn-enter-to {
+          transform: translateY(0);
+        }
+
+        &.slideIn-leave {
+          transform: translateY(0);
+        }
+
+        &.slideIn-leave-to {
+          transform: translateY(-100%);
+        }
+
+        &.slideIn-leave-active {
+          transition-delay: 0;
+        }
+      }
+
+      &.open-on-bottom {
+        right: 0;
+        left: 0;
+        bottom: 0;
+        top: auto;
+
+        &.slideIn-enter {
+          transform: translateY(100%);
+        }
+
+        &.slideIn-enter-to {
+          transform: translateY(0);
+        }
+
+        &.slideIn-leave {
+          transform: translateY(0);
+        }
+
+        &.slideIn-leave-to {
+          transform: translateY(100%);
+        }
+
+        &.slideIn-leave-active {
+          transition-delay: 0;
+        }
+      }
+
       &.open-on-right {
         right: 0;
         left: auto;

@@ -35,6 +35,10 @@ const vm = {
 
       if (panel.openOn === 'left') {
         panelClasses['open-on-left'] = true;
+      } else if (panel.openOn === 'bottom') {
+        panelClasses['open-on-bottom'] = true;
+      } else if (panel.openOn === 'top') {
+        panelClasses['open-on-top'] = true;
       } else {
         panelClasses['open-on-right'] = true;
       }
@@ -86,9 +90,19 @@ const vm = {
         'z-index': this.panels.length + 100
       };
 
-      if (!panel.width) panel.styles.width = '900px';
-      else if (!panel.width.endsWith || !panel.width.endsWith('px')) panel.styles.width = `${panel.width}px`;
-      else panel.styles.width = panel.width;
+      if (panel.openOn === 'top' || panel.openOn === 'bottom') {
+        panel.styles.width === '100%';
+
+        if (!panel.height) panel.styles.height = '900px';
+        else if (!panel.height.endsWith || !panel.height.endsWith('px')) panel.styles.height = `${panel.height}px`;
+        else panel.styles.height = panel.height;
+      } else {
+        panel.styles.height === '100%';
+
+        if (!panel.width) panel.styles.width = '900px';
+        else if (!panel.width.endsWith || !panel.width.endsWith('px')) panel.styles.width = `${panel.width}px`;
+        else panel.styles.width = panel.width;
+      }
 
       panel.visible = true;
       panel.cssId = `slide-out-panel-${panel.id}`;
