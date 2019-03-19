@@ -28,13 +28,13 @@ class PanelResult {
   }
 
   /**
-   * @param {Object} [updatedOptions]
-   * @param {Object} [updatedOptions.props] - any props you want to update
+   * @param {Object} [options]
+   * @param {Object} [options.props] - any props you want to update
    */
-  show(updatedOptions = {}) {
-    const panelOptions = Object.assign(this._panelOptions, updatedOptions);
+  show(options = {}) {
+    const panelOptions = Object.assign(this._panelOptions, options);
 
-    return showExistingPanelById(this._id, panelOptions);
+    return showPanel(panelOptions, this._id);
   }
 
   hide() {
@@ -44,14 +44,6 @@ class PanelResult {
 
     eventBus.$emit('hideSlideOutPanel', panelOptions);
   }
-}
-
-function showNewPanel(options) {
-  return showPanel(options);
-}
-
-function showExistingPanelById(id, options) {
-  return showPanel(options, id);
 }
 
 function showPanel(options, existingId) {
@@ -74,5 +66,7 @@ function showPanel(options, existingId) {
 }
 
 export default {
-  show: showNewPanel
+  show(options) {
+    return showPanel(options);
+  }
 };
