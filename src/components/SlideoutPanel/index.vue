@@ -111,9 +111,7 @@ const vm = {
       panel.componentName = isString(panel.component) ? panel.component : panel.component.name; //tuck away the actual component name
 
       if (window.vue2PanelDebug) {
-        console.log('panel.props', panel.props);
-        console.log('panel.component', panel.component);
-        console.log('panel.componentName', panel.componentName);
+        console.log('panel', panel);
       }
 
       if (!existingPanel) {

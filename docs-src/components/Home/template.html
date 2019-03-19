@@ -80,85 +80,16 @@ panel1Handle.promise
   </pre>
       </div>
     </div>
-    <p>
-      Let's say we have a simple page component called 'home' and we want to launch a panel from it:
-    </p>
-    <div class="highlight">
-      <pre class="highlight">import Vue from 'vue';
-import { vueSlideoutPanelService } from 'vue2-slideout-panel';
-
-export default {
-  name: 'home',
-  data() {
-    return {}
-  },
-  methods: {
-    showPanel1() {
-      const panel1Handle = vueSlideoutPanelService.show({
-        component: 'panel-1',
-        width: '500px', //customize the width
-        cssClass: 'panel-1-custom-class', //add a custom CSS class
-        keepAlive: true,
-        props: {
-          data: {
-            firstName: 'John',
-            lastName: 'Doe',
-            age: 39
-          }
-        }
-      });
-
-      panel1Handle.promise
-        .then(results => {
-          console.log('Results for panel 1:', results);
-        });
-    }
-  }
-};
-</pre>
-    </div>
-    <p>
-      Here's the component that we want to live inside the panel:
-    </p>
-    <div class="highlight">
-      <pre class="highlight">
-export default {
-  name: 'panel-1',
-  props: {
-    data: {
-      type: Object,
-      required: true
-    }
-  },
-  data() {
-    return {};
-  },
-  methods: {
-    closePanel() {
-      this.$emit('closePanel', {
-        name: this.form.name
-      });
-    }
-  }
-};
-</pre>
-    </div>
-    <h2>Panel Options</h2>
-    <p>
-      The following options can be passed to <code>vueSlideoutPanelService.show()</code>.
-    </p>
-    <div class="highlight">
-      <pre class="highlight">
-vueSlideoutPanelService.show({
-  component: <span class="type">String</span>, //Vue.js Component name
-  width: <span class="type">String|Number</span>, //custom width
-  cssClass: <span class="type">String</span>, //custom css class to apply to the panel body
-  hideBg: <span class="type">Boolean</span>, //hide the backdrop - only works on the first panel, all subsequent panels will follow suit
-  disableBgClick: <span class="type">Boolean</span>, //disable closing the panel by clicking on the backdrop
-  keepAlive: <span class="type">Boolean</span>, //keep alive the inner component
-  props: <span class="type">Object</span> //object containing any data that you want passed to your Vue.js component as props
-})
-</pre>
+    <div class="example-2">
+      <form>
+        <div class="form-group">
+          <label>Stack</label>
+          <input class="form-control" v-model="example1Form.name" />
+        </div>
+      </form>
+      <button v-on:click.prevent="showPanel2">
+        Show Panel
+      </button>
     </div>
   </section>
 </div>

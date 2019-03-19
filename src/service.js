@@ -28,11 +28,11 @@ class PanelResult {
   }
 
   /**
-   * @param {Object} [options]
-   * @param {Object} [options.props] - any props you want to update
+   * @param {Object} [panel]
+   * @param {Object} [panel.props] - any props you want to update
    */
-  show(options = {}) {
-    const panelOptions = Object.assign(this._panelOptions, options);
+  show(panel = {}) {
+    const panelOptions = Object.assign(this._panelOptions, panel);
 
     return showPanel(panelOptions, this._id);
   }
@@ -46,27 +46,41 @@ class PanelResult {
   }
 }
 
-function showPanel(options, existingId) {
-  if (!options) throw new Error('options is required');
-  if (!options.component) throw new Error('options.component is required');
+function showPanel(panelOptions, existingId) {
+  if (!panelOptions) throw new Error('panelOptions is required');
+  if (!panelOptions.component) throw new Error('panelOptions.component is required');
 
   const id = existingId || generateGuid();
 
-  options.id = id;
+  panelOptions.id = id;
 
   const promise = new Promise(resolve => {
-    eventBus.$emit('showSlideOutPanel', options);
+    eventBus.$emit('showSlideOutPanel', panelOptions);
 
-    eventBus.$once(`hideSlideOutPanel-${options.id}`, payload => {
+    eventBus.$once(`hideSlideOutPanel-${panelOptions.id}`, payload => {
       return resolve(payload.data);
     });
   });
 
-  return new PanelResult(id, promise, options);
+  return new PanelResult(id, promise, panelOptions);
+}
+
+function showPanelStack(panelOptions) {
+  if (!panelOptions || !panelOptions.length) throw new Error('panelOptions must be an array');
+
+  const panelResults = panelOptions.map((panelOption, index) => {
+    // //NOTE: disable animation for all but the top most panel
+    // if (index < (panelOptions.length - 1)) {
+    //   panelOption.animate = false;
+    // }
+
+    return showPanel(panelOption, this._id);
+  });
+
+  return panelResults;
 }
 
 export default {
-  show(options) {
-    return showPanel(options);
-  }
+  showPanel,
+  showPanelStack
 };

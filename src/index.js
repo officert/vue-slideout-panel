@@ -10,7 +10,8 @@ if (typeof window !== 'undefined' && window.Vue) {
   window.Vue.use({
     install(NewVue) {
       NewVue.component('slideout-panel', VueSlideoutPanel);
-      NewVue.prototype.$showPanel = vueSlideoutPanelService.show;
+      NewVue.prototype.$showPanel = vueSlideoutPanelService.showPanel;
+      NewVue.prototype.$showPanelStack = vueSlideoutPanelService.showPanelStack;
     }
   });
 
@@ -20,7 +21,8 @@ if (typeof window !== 'undefined' && window.Vue) {
 export default {
   install: function(NewVue) {
     NewVue.component('slideout-panel', VueSlideoutPanel);
-    NewVue.prototype.$showPanel = vueSlideoutPanelService.show;
+    NewVue.prototype.$showPanel = vueSlideoutPanelService.showPanel;
+    NewVue.prototype.$showPanelStack = vueSlideoutPanelService.showPanelStack;
   },
   VueSlideoutPanel,
   vueSlideoutPanelService

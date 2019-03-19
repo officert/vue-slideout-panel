@@ -1,13 +1,13 @@
 <transition name="fadeIn">
   <div class="slideout-panel clearfix">
     <transition name="fadeIn">
-      <div class="slideout-panel-bg" v-on:click="onBgClicked" :class="{ 'transparent' : !panelBgVisible }" v-if="panelsVisible">
+      <div class="slideout-panel-bg" @click="onBgClicked" :class="{ 'transparent' : !panelBgVisible }" v-if="panelsVisible">
       </div>
     </transition>
     <transition-group class="slideout-wrapper" tag="div" name="slideIn">
       <div :id="panel.cssId" class="slideout" :style="panel.styles" :class="getPanelClasses(panel)" v-show="panel.visible" v-for="panel in panels" @click.stop :key="panel.id">
         <keep-alive :include="[panel.keepAlive ? panel.componentName : '']">
-          <component :is="panel.inlineComponent ? panel.component : panel.componentName" v-bind="panel.props || {}" v-on:closePanel="closePanel(panel, $event)"></component>
+          <component :is="panel.inlineComponent ? panel.component : panel.componentName" v-bind="panel.props || {}" @closePanel="closePanel(panel, $event)"></component>
         </keep-alive>
       </div>
     </transition-group>

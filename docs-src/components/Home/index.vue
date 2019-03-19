@@ -47,6 +47,21 @@ export default {
           this.example1Result = results;
         });
     },
+    showPanel2() {
+      this.$showPanelStack([{
+        height: '400px',
+        component: 'panel-1',
+        props: {
+          name: this.example1Form.name
+        }
+      }, {
+        height: '400px',
+        component: 'panel-2',
+        props: {
+          name: this.example1Form.name
+        }
+      }]);
+    },
     showPanel3() {
       const handle = this.$showPanel({
         width: 700,
