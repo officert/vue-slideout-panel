@@ -68,12 +68,7 @@ function showPanel(panelOptions, existingId) {
 function showPanelStack(panelOptions) {
   if (!panelOptions || !panelOptions.length) throw new Error('panelOptions must be an array');
 
-  const panelResults = panelOptions.map((panelOption, index) => {
-    // //NOTE: disable animation for all but the top most panel
-    // if (index < (panelOptions.length - 1)) {
-    //   panelOption.animate = false;
-    // }
-
+  const panelResults = panelOptions.map((panelOption) => {
     return showPanel(panelOption, this._id);
   });
 
