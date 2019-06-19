@@ -171,11 +171,15 @@ const vm = {
 
       if (currentPanel.disableBgClick) return;
 
-      this.closeCurrentPanel();
+      this.closeCurrentPanel({
+        closedBy: 'bg'
+      });
     },
     onEscapeKeypress(e) {
       if (e.keyCode === 27) {
-        this.closeCurrentPanel();
+        this.closeCurrentPanel({
+          closedBy: 'esc'
+        });
       }
     }
   },

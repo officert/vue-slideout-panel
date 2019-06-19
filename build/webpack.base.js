@@ -3,6 +3,7 @@
 const options = require('./options');
 const autoprefixer = require('autoprefixer');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
   resolve: {
@@ -44,6 +45,7 @@ module.exports = {
     ]
   },
   plugins: [
-    new VueLoaderPlugin(),
+    new VueLoaderPlugin()
+    // new BundleAnalyzerPlugin()
   ]
 };

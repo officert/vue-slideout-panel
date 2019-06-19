@@ -15,7 +15,7 @@
       <a href="https://github.com/officert/vue-slideout-panel/tarball/master" class="btn">Download .tar.gz</a>
     </div>
     <div class="demo-btn">
-      <button class="btn btn-xl" v-on:click.prevent="showPanel3">
+      <button class="btn btn-xl" @click.prevent="showPanel3">
         Demo
       </button>
     </div>
@@ -71,7 +71,7 @@ panel1Handle.promise
           <input class="form-control" v-model="example1Form.name" />
         </div>
       </form>
-      <button v-on:click.prevent="showPanel1">
+      <button @click.prevent="showPanel1">
         Show Panel
       </button>
       <div class="result">
@@ -87,7 +87,7 @@ panel1Handle.promise
           <input class="form-control" v-model="example1Form.name" />
         </div>
       </form>
-      <button v-on:click.prevent="showPanel2">
+      <button @click.prevent="showPanel2">
         Show Panel
       </button>
     </div>
