@@ -169,7 +169,9 @@ const vm = {
     onBgClicked() {
       const currentPanel = this.panels[this.panels.length - 1];
 
-      if (!currentPanel || currentPanel.disableBgClick) return;
+      if (!currentPanel || currentPanel.disableBgClick) {
+        return;
+      }
 
       this.closeCurrentPanel({
         closedBy: 'bg'
@@ -177,6 +179,12 @@ const vm = {
     },
     onEscapeKeypress(e) {
       if (e.keyCode === 27) {
+        const currentPanel = this.panels[this.panels.length - 1];
+
+        if (currentPanel.disableEscClick) {
+          return;
+        }
+
         this.closeCurrentPanel({
           closedBy: 'esc'
         });
