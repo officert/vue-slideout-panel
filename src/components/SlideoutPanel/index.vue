@@ -169,7 +169,7 @@ const vm = {
     onBgClicked() {
       const currentPanel = this.panels[this.panels.length - 1];
 
-      if (currentPanel.disableBgClick) {
+      if (!currentPanel || currentPanel.disableBgClick) {
         return;
       }
 
