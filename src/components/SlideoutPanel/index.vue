@@ -30,7 +30,7 @@ const vm = {
     },
     panelTopVisibleZindex() {
       const visiblePanels = this.panels.filter(panel => panel.visible);
-      return (visiblePanels.length > 0) ? visiblePanels[visiblePanels.length - 1].styles['z-index'] : 100;
+      return (visiblePanels.length > 0) ? Math.max(...visiblePanels.map(panel => panel.styles['z-index'])) : 100;
     }
   },
   methods: {
