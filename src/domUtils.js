@@ -1,12 +1,10 @@
 function addClass(element, className) {
-  removeClass(element, className);
-
-  element.className += ` ${className}`;
+  element.classList.remove(className);
+  element.classList.add(className);
 }
 
 function removeClass(element, className) {
-  const regex = new RegExp(`(?:^|\\s)${className}(?:\\s|$)`);
-  element.className = element.className.replace(regex, '');
+  element.classList.remove(className);
 }
 
 export default {

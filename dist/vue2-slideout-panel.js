@@ -1,5 +1,5 @@
 /*!
- * vue2-slideout-panel v2.3.0 (https://github.com/officert/vue-slideout-panel)
+ * vue2-slideout-panel v2.5.0 (https://github.com/officert/vue-slideout-panel)
  * (c) 2019 Tim Officer
  * Released under the MIT License.
  */
@@ -342,7 +342,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _nod
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\nfunction addClass(element, className) {\n  removeClass(element, className);\n  element.className += \" \".concat(className);\n}\n\nfunction removeClass(element, className) {\n  var regex = new RegExp(\"(?:^|\\\\s)\".concat(className, \"(?:\\\\s|$)\"));\n  element.className = element.className.replace(regex, '');\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  addClass: addClass,\n  removeClass: removeClass\n});\n\n//# sourceURL=webpack:///./src/domUtils.js?");
+eval("__webpack_require__.r(__webpack_exports__);\nfunction addClass(element, className) {\n  element.classList.remove(className);\n  element.classList.add(className);\n}\n\nfunction removeClass(element, className) {\n  element.classList.remove(className);\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  addClass: addClass,\n  removeClass: removeClass\n});\n\n//# sourceURL=webpack:///./src/domUtils.js?");
 
 /***/ }),
 

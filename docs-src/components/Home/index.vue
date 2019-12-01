@@ -65,7 +65,8 @@ export default {
     showPanel3() {
       const handle = this.$showPanel({
         width: 700,
-        component: 'panel-3'
+        component: 'panel-3',
+        class: 'foobar'
       });
 
       handle.promise
