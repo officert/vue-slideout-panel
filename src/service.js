@@ -1,16 +1,7 @@
 import Promise from 'promise-polyfill';
 
 import eventBus from './eventBus';
-
-function generateGuid() {
-  function s4() {
-    return Math.floor((1 + Math.random()) * 0x10000)
-      .toString(16)
-      .substring(1);
-  }
-
-  return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
-}
+import utils from './utils/utils';
 
 class PanelResult {
   constructor(id, promise, panelOptions) {
@@ -50,9 +41,10 @@ function showPanel(panelOptions, existingId) {
   if (!panelOptions) throw new Error('panelOptions is required');
   if (!panelOptions.component) throw new Error('panelOptions.component is required');
 
-  const id = existingId || generateGuid();
+  const id = existingId || utils.generateGuid();
 
   panelOptions.id = id;
+  panelOptions.openOn = panelOptions.openOn || 'left';
 
   const promise = new Promise(resolve => {
     eventBus.$emit('showSlideOutPanel', panelOptions);
