@@ -11,14 +11,31 @@
       </router-link>
     </li>
     <li>
+      <router-link activeClass="active" :to="{ name : 'PanelResult' }">
+        Panel Result
+      </router-link>
+    </li>
+    <li>
       <router-link activeClass="active" :to="{ name : 'Options' }">
         Options
       </router-link>
     </li>
-    <li>
+    <li :class="{ 'active' : activeRoute.startsWith('Examples') }">
       <router-link activeClass="active" :to="{ name : 'Examples' }">
         Examples
       </router-link>
+      <ul>
+        <li>
+          <router-link activeClass="active" :to="{ name : 'ExamplesOpenOn' }">
+            Open On
+          </router-link>
+        </li>
+        <li>
+          <router-link activeClass="active" :to="{ name : 'ExamplesWidth' }">
+            Width
+          </router-link>
+        </li>
+      </ul>
     </li>
   </ul>
 </aside>

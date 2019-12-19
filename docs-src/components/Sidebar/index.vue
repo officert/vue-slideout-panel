@@ -7,6 +7,11 @@ export default {
   data() {
     return {}
   },
+  computed: {
+    activeRoute() {
+      return this.$route.name;
+    }
+  },
   methods: {}
 };
 </script>
@@ -24,6 +29,12 @@ export default {
         li {
             display: block;
 
+            &.active {
+              ul {
+                display: block;
+              }
+            }
+
             a {
                 display: block;
                 padding: 10px;
@@ -31,6 +42,17 @@ export default {
 
                 &.active {
                     background: #F3F6FA;
+                }
+            }
+
+            ul {
+                padding-left: 30px;
+                margin-top: 15px;
+                display: none;
+                li {
+                    a {
+                        padding: 5px;
+                    }
                 }
             }
         }

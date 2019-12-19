@@ -3,13 +3,12 @@
 
 <script>
 export default {
-  name: 'examples',
+  name: 'panel-result',
   data() {
     return {}
   },
   methods: {}
 };
 </script>
-
 <style lang="less">
 </style>

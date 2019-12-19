@@ -1,0 +1,28 @@
+<div id="examples">
+  <p>
+    Open panels on the left, right, top or bottom side using the <code>openOn</code> option:
+  </p>
+  <pre class="highlight">
+const panel = this.$showPanel({
+    component: "panel-1",
+    openOn: '{{ this.openOn }}',
+    props: {}
+});</pre>
+  <select class="form-control" v-model="openOn">
+    <option value="left">
+      Left
+    </option>
+    <option value="right">
+      Right
+    </option>
+    <option value="top">
+      Top
+    </option>
+    <option value="bottom">
+      Bottom
+    </option>
+  </select>
+  <button @click.prevent="showPanel">
+    Show Panel
+  </button>
+</div>

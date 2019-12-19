@@ -70,8 +70,7 @@ button.hide-loader .hidden {
 }
 
 .form-control {
-    display: block;
-    width: 100%;
+    display: inline-block;
     padding: 0.375rem 0.75rem;
     font-size: 1rem;
     line-height: 1.5;

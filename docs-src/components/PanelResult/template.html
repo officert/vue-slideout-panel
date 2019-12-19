@@ -1,0 +1,67 @@
+<div id="panel-result">
+  <h2>Panel Result</h2>
+  <p>
+    The <code>$showPanel</code> method returns a <code>PanelResult</code> object.
+  </p>
+  <pre class="highlight">
+methods: {
+  showPanel() {
+    const panelResult = this.$showPanel({
+      component: 'your-component-name'
+    });
+  }
+}</pre>
+  <p>
+    The <code>PanelResult</code> object allows you to show and hide the panel programatically.
+  </p>
+  <p>
+    Just store the <code>PanelResult</code> to your Vue component and use a method to call <code>hide()</code>.
+  </p>
+  <pre class="highlight">
+methods: {
+  showPanel() {
+    this.panelResult = this.$showPanel({
+      component: 'your-component-name'
+    });
+  },
+  hidePanel() {
+    this.panelResult.hide();
+  }
+}</pre>
+  <p>
+    You can also call <code>show()</code> to re-show a panel.
+  </p>
+  <pre class="highlight">
+methods: {
+  showPanel() {
+    if (this.panelResult) {
+      this.panelResult.show();
+
+      return;
+    }
+
+    this.panelResult = this.$showPanel({
+      component: 'your-component-name'
+    });
+  }
+}</pre>
+  <p>
+    The <code>PanelResult</code> object also contains a <code>promise</code> property, which is a <code>Promise</code>.
+  </p>
+  <p>
+    You can use this promise to receive data from your panel component.
+  </p>
+  <pre class="highlight">
+methods: {
+  showPanel() {
+    const panelResult = this.$showPanel({
+      component: 'your-component-name'
+    });
+
+    panelResult.promise
+      .then(result => {
+        //result is whatever you're panel component passes to <code>this.$emit("closePanel", {})</code>
+      });
+  }
+}</pre>
+</div>

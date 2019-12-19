@@ -3,7 +3,7 @@
 
 <script>
 export default {
-  name: 'examples',
+  name: 'panel-1',
   data() {
     return {}
   },
@@ -12,4 +12,7 @@ export default {
 </script>
 
 <style lang="less">
+#panel-1 {
+    padding: 45px;
+}
 </style>
