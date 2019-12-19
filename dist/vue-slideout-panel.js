@@ -1,5 +1,5 @@
 /*!
- * vue2-slideout-panel v2.5.0 (https://github.com/officert/vue-slideout-panel)
+ * vue2-slideout-panel v2.6.0 (https://github.com/officert/vue-slideout-panel)
  * (c) 2019 Tim Officer
  * Released under the MIT License.
  */
@@ -12047,7 +12047,9 @@ var vm = {
         panelClasses['open-on-right'] = true;
       }
 
-      if (panel.cssClass) panelClasses[panel.cssClass] = true;
+      if (panel.cssClass) {
+        panelClasses[panel.cssClass] = true;
+      }
 
       return panelClasses;
     },
@@ -12101,11 +12103,23 @@ var vm = {
       if (panel.openOn === 'top' || panel.openOn === 'bottom') {
         panel.styles.width === '100%';
 
-        if (!panel.height) panel.styles.height = '900px';else if (!panel.height.endsWith || !panel.height.endsWith('px')) panel.styles.height = panel.height + 'px';else panel.styles.height = panel.height;
+        if (!panel.height) {
+          panel.styles.height = '900px';
+        } else if (!panel.height.endsWith || !panel.height.endsWith('px')) {
+          panel.styles.height = panel.height + 'px';
+        } else {
+          panel.styles.height = panel.height;
+        }
       } else {
         panel.styles.height === '100%';
 
-        if (!panel.width) panel.styles.width = '900px';else if (!panel.width.endsWith || !panel.width.endsWith('px')) panel.styles.width = panel.width + 'px';else panel.styles.width = panel.width;
+        if (!panel.width) {
+          panel.styles.width = '900px';
+        } else if (!panel.width.endsWith || !panel.width.endsWith('px')) {
+          panel.styles.width = panel.width + 'px';
+        } else {
+          panel.styles.width = panel.width;
+        }
       }
 
       panel.visible = true;
@@ -12180,7 +12194,7 @@ var vm = {
       if (e.keyCode === 27) {
         var currentPanel = this.panels[this.panels.length - 1];
 
-        if (currentPanel.disableEscClick) {
+        if (!currentPanel || currentPanel.disableEscClick) {
           return;
         }
 
@@ -12520,15 +12534,11 @@ var _eventBus = __webpack_require__(8);
 
 var _eventBus2 = _interopRequireDefault(_eventBus);
 
+var _utils = __webpack_require__(62);
+
+var _utils2 = _interopRequireDefault(_utils);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function generateGuid() {
-  function s4() {
-    return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
-  }
-
-  return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
-}
 
 var PanelResult = function () {
   function PanelResult(id, promise, panelOptions) {
@@ -12574,9 +12584,10 @@ function showPanel(panelOptions, existingId) {
   if (!panelOptions) throw new Error('panelOptions is required');
   if (!panelOptions.component) throw new Error('panelOptions.component is required');
 
-  var id = existingId || generateGuid();
+  var id = existingId || _utils2.default.generateGuid();
 
   panelOptions.id = id;
+  panelOptions.openOn = panelOptions.openOn || 'left';
 
   var promise = new _promisePolyfill2.default(function (resolve) {
     _eventBus2.default.$emit('showSlideOutPanel', panelOptions);
@@ -13320,6 +13331,29 @@ function finallyConstructor(callback) {
 
 /* harmony default export */ __webpack_exports__["a"] = (finallyConstructor);
 
+
+/***/ }),
+/* 62 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+function generateGuid() {
+  function s4() {
+    return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
+  }
+
+  return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+}
+
+exports.default = {
+  generateGuid: generateGuid
+};
+module.exports = exports['default'];
 
 /***/ })
 /******/ ]);
