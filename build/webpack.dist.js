@@ -1,9 +1,8 @@
 'use strict'
 
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const TerserPlugin = require('terser-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-const merge = require('webpack-merge');
+const merge = require('deep-assign');
 const webpack = require('webpack');
 
 const options = require('./options');
@@ -17,29 +16,19 @@ const config = merge(baseConfig, {
   },
   entry: options.paths.resolve('src/index.js'),
   output: {
-    filename: options.isProduction ? 'vue2-slideout-panel.min.js' : 'vue2-slideout-panel.js',
+    filename: options.isProduction ? 'vue-slideout-panel.min.js' : 'vue-slideout-panel.js',
     path: options.paths.output.main,
     libraryTarget: 'umd'
-  },
-  optimization: {
-    minimizer: [
-      new TerserPlugin({
-        terserOptions: {
-          ecma: 6,
-          compress: true,
-          output: {
-            comments: false,
-            beautify: false
-          }
-        }
-      }),
-    ]
   },
   plugins: [
     new webpack.BannerPlugin({
       banner: options.banner,
       raw: true,
       entryOnly: true
+    }),
+
+    new ExtractTextPlugin({
+      filename: options.isProduction ? 'vue-slideout-panel.min.css' : 'vue-slideout-panel.css'
     })
   ]
 });
@@ -52,30 +41,22 @@ config.plugins = config.plugins.concat([
   new webpack.DefinePlugin({
     VERSION: JSON.stringify(options.version)
   })
-]);
+])
 
 if (options.isProduction) {
-  config.plugins.push(
+  config.plugins = config.plugins.concat([
     // Set the production environment
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production')
+    }),
+
+    // Minify with dead-code elimination
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      }
     })
-  );
+  ]);
 }
-
-config.module.rules.push({
-  test: /\.css$/,
-  use: [
-    options.isProduction ? MiniCssExtractPlugin.loader : 'vue-style-loader',
-    'css-loader'
-  ]
-});
-
-config.plugins.push(
-  new MiniCssExtractPlugin({
-    filename: options.isProduction ? 'vue2-slideout-panel.min.css' : 'vue2-slideout-panel.css',
-    disable: !options.isProduction
-  })
-);
 
 module.exports = config;

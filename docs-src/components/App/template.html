@@ -1,4 +1,29 @@
 <div id="app" class="">
-  <router-view></router-view>
+  <section class="page-header">
+    <div class="logo">
+      <img src="https://vuejs.org/images/logo.png" />
+    </div>
+    <h1 class="project-name">
+      vue2-slideout-panel
+    </h1>
+    <h2 class="project-tagline">
+      Vue.js component for creating stackable slideout panels.
+    </h2>
+    <div>
+      <a href="https://github.com/officert/vue-slideout-panel" class="btn">View on GitHub</a>
+      <a href="https://github.com/officert/vue-slideout-panel/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/officert/vue-slideout-panel/tarball/master" class="btn">Download .tar.gz</a>
+    </div>
+    <div class="center">
+      <!-- Place this tag where you want the button to render. -->
+      <a class="github-button" href="https://github.com/officert/vue-slideout-panel" data-icon="octicon-star" data-show-count="true" aria-label="Star officert/vue-slideout-panel on GitHub">Star</a>
+    </div>
+  </section>
+  <div class="main-content">
+    <sidebar></sidebar>
+    <div class="right-panel">
+      <router-view></router-view>
+    </div>
+  </div>
   <slideout-panel></slideout-panel>
 </div>

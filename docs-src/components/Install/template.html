@@ -1,0 +1,50 @@
+<div id="install">
+  <h2>Installation</h2>
+  <div>
+    <pre class="highlight">npm install vue2-slideout-panel --save-dev</pre>
+  </div>
+  <h2>Usage</h2>
+  <p>
+    1) Install the Vue Slideout Panel plugin:
+  </p>
+  <div>
+    <pre class="highlight">import Vue from 'vue';
+import VueSlideoutPanel from 'vue2-slideout-panel';
+
+Vue.use(VueSlideoutPanel);</pre>
+    <p>
+      2) In your HTML add the component:
+    </p>
+    <div class="highlight">
+      <pre class="highlight">&lt;slideout-panel&gt;&lt;/slideout-panel&gt;</pre>
+    </div>
+    <p>
+      3) Launch a panel from your component:
+    </p>
+    <div class="highlight">
+      <pre class="highlight">
+methods: {
+  showPanel() {
+    const panel1Handle = this.$showPanel({
+      component : 'your-component-name',
+      props: {
+        //any data you want passed to your component
+      }
+    })
+
+    panel1Handle.promise
+      .then(result => {
+
+      });
+  }
+}
+</pre>
+      <div class="alert">
+        <p>
+          <code>'your-component-name'</code> just needs to be the name of a valid component that you have registered with Vue like this:
+          <code>Vue.component('your-component-name', {})</code>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

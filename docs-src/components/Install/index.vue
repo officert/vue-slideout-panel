@@ -3,14 +3,10 @@
 
 <script>
 export default {
-  name: 'home',
+  name: 'install',
   data() {
     return {}
   },
   methods: {}
 };
 </script>
-
-<style lang="less">
-#home {}
-</style>
