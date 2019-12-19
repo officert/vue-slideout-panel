@@ -8,6 +8,7 @@ import PanelResult from './components/PanelResult';
 import Examples from './components/Examples';
 import ExamplesOpenOn from './components/Examples-openOn';
 import ExamplesWidth from './components/Examples-width';
+import ExamplesPassingData from './components/Examples-passingData';
 
 Vue.use(VueRouter);
 
@@ -46,6 +47,10 @@ const routes = [{
     name: 'ExamplesWidth',
     path: '/examples/width',
     component: ExamplesWidth,
+  }, {
+    name: 'ExamplesPassingData',
+    path: '/examples/passing-data',
+    component: ExamplesPassingData,
   }]
 }];
 

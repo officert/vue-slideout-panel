@@ -1,0 +1,61 @@
+<div id="examples">
+  <h2>Passing Data</h2>
+  <p>
+    You can pass data to your components by using the <code>props</code> property:
+  </p>
+  <pre class="highlight">
+const panelResult = this.$showPanel({
+    component: "panel-2",
+    props: {
+      age: {{ age }}
+    }
+});</pre>
+  <p>
+    And you can receive data from your panel by using the <code>promise</code> property of the <code>PanelResult</code> object:
+  </p>
+  <pre class="highlight">
+const panelResult = this.$showPanel({
+    component: "panel-2",
+    props: {
+      age: {{ age }}
+    }
+});
+
+panelResult.promise
+  .then(result => {
+    //result is the value passed from your component calling <strong>this.$emit('close-panel', //some value);</strong>
+  });</pre>
+  <p>
+    In your panel component you just need to call <code>this.$emit('close-panel')</code> to close your panel:
+  </p>
+  <pre class="highlight">
+//in your component's code ("panel-2" in this example)
+
+{
+  props: {
+      age: {
+        type: String,
+        required: true
+      }
+  },
+  data() {
+    name : null
+  },
+  methods: {
+    closePanel() {
+      this.$emit('closePanel', {});
+    }
+  }
+}</pre>
+  <h2>Example</h2>
+  <div class="form-group">
+    <label>What's your age?</label>
+    <input type="number" class="form-control" v-model="age" />
+  </div>
+  <div class="form-group" v-if="name">
+    Your name is {{ name }}
+  </div>
+  <button @click.prevent="showPanel">
+    Show Panel
+  </button>
+</div>
