@@ -27,6 +27,10 @@ const vm = {
     },
     panelBgVisible() {
       return this.panels.filter(panel => panel.hideBg).length === 0;
+    },
+    panelTopVisibleZindex() {
+      const visiblePanels = this.panels.filter(panel => panel.visible);
+      return (visiblePanels.length > 0) ? Math.max(...visiblePanels.map(panel => panel.styles['z-index'])) : 100;
     }
   },
   methods: {
