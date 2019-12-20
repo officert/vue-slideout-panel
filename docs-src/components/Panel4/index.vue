@@ -10,7 +10,7 @@ export default {
   },
   methods: {
     closePanel() {
-      this.$emit('close-panel');
+      this.$emit('closePanel');
     }
   }
 };
