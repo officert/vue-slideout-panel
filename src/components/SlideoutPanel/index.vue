@@ -13,6 +13,8 @@ function isString(val) {
   return typeof val === 'string';
 }
 
+const Z_INDEX_START = 100;
+
 const vm = {
   name: 'slideout-panel',
   components: {},
@@ -30,7 +32,7 @@ const vm = {
     },
     panelTopVisibleZindex() {
       const visiblePanels = this.panels.filter(panel => panel.visible);
-      return (visiblePanels.length > 0) ? Math.max(...visiblePanels.map(panel => panel.styles['z-index'])) : 100;
+      return (visiblePanels.length > 0) ? Math.max(...visiblePanels.map(panel => panel.styles['z-index'])) : Z_INDEX_START;
     }
   },
   methods: {
@@ -93,7 +95,7 @@ const vm = {
       }
 
       panel.styles = {
-        'z-index': this.panels.length + 100
+        'z-index': this.panels.length + Z_INDEX_START
       };
 
       if (panel.openOn === 'top' || panel.openOn === 'bottom') {
