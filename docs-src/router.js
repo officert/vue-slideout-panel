@@ -9,6 +9,7 @@ import Examples from './components/Examples';
 import ExamplesOpenOn from './components/Examples-openOn';
 import ExamplesWidth from './components/Examples-width';
 import ExamplesPassingData from './components/Examples-passingData';
+import ExamplesStack from './components/Examples-stack';
 
 Vue.use(VueRouter);
 
@@ -51,6 +52,10 @@ const routes = [{
     name: 'ExamplesPassingData',
     path: '/examples/passing-data',
     component: ExamplesPassingData,
+  }, {
+    name: 'ExamplesStack',
+    path: '/examples/stack',
+    component: ExamplesStack,
   }]
 }];
 
