@@ -1,5 +1,5 @@
 /*!
- * vue2-slideout-panel v2.7.0 (https://github.com/officert/vue-slideout-panel)
+ * vue2-slideout-panel v2.8.0 (https://github.com/officert/vue-slideout-panel)
  * (c) 2019 Tim Officer
  * Released under the MIT License.
  */
@@ -12257,6 +12257,11 @@ var vm = {
         return panel.hideBg;
       }).length === 0;
     },
+    panelBgRemoved: function panelBgRemoved() {
+      return this.panels.filter(function (panel) {
+        return panel.removeBg;
+      }).length > 0;
+    },
     panelTopVisibleZindex: function panelTopVisibleZindex() {
       var visiblePanels = this.panels.filter(function (panel) {
         return panel.visible;
@@ -13236,7 +13241,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "name": "fadeIn"
     }
-  }, [(_vm.panelsVisible) ? _c('div', {
+  }, [(_vm.panelsVisible && !_vm.panelBgRemoved) ? _c('div', {
     staticClass: "slideout-panel-bg",
     class: {
       'transparent': !_vm.panelBgVisible

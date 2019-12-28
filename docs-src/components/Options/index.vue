@@ -32,6 +32,11 @@ export default {
         desc: 'hide the backdrop - only works on the first panel, all subsequent panels will follow suit',
         default: false
       }, {
+        name: 'removeBg',
+        type: 'Boolean',
+        desc: 'remove the backdrop - only works on the first panel, all subsequent panels will follow suit',
+        default: false
+      }, {
         name: 'disableBgClick',
         type: 'Boolean',
         desc: 'disable closing the panel by clicking on the backdrop',
