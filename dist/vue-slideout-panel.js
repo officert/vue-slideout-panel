@@ -1,5 +1,5 @@
 /*!
- * vue2-slideout-panel v2.10.0 (https://github.com/officert/vue-slideout-panel)
+ * vue2-slideout-panel v2.11.0 (https://github.com/officert/vue-slideout-panel)
  * (c) 2020 Tim Officer
  * Released under the MIT License.
  */
@@ -13363,7 +13363,7 @@ var PanelResult = function () {
     value: function show() {
       var panel = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
-      var panelOptions = (0, _assign2.default)(PANEL_DEFAULTS, this._panelOptions, panel);
+      var panelOptions = (0, _assign2.default)(this._panelOptions, panel);
 
       return showPanel(panelOptions, this._id);
     }
@@ -13390,6 +13390,8 @@ function showPanel(panelOptions, existingId) {
   if (!panelOptions.component) throw new Error('panelOptions.component is required');
 
   var id = existingId || _utils2.default.generateGuid();
+
+  panelOptions = (0, _assign2.default)(PANEL_DEFAULTS, panelOptions);
 
   panelOptions.id = id;
   panelOptions.openOn = panelOptions.openOn || 'left';
