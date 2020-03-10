@@ -144,6 +144,12 @@ const vm = {
     onHideSlideOutPanel(panel) {
       this.closeCurrentPanel(panel);
     },
+    onHideAllSideOutPanels() {
+      (this.panels || []).reverse()
+        .forEach(panel => {
+          this.closePanel(panel);
+        });
+    },
     createPanelStylesheet(panel) {
       const head = document.head || document.getElementsByTagName('head')[0];
       const style = document.createElement('style');
@@ -215,12 +221,14 @@ const vm = {
 
     eventBus.$on('showSlideOutPanel', this.onShowSlideOutPanel);
     eventBus.$on('hideSlideOutPanel', this.onHideSlideOutPanel);
+    eventBus.$on('hideAllSlideOutPanels', this.onHideAllSideOutPanels);
   },
   destroyed() {
     document.removeEventListener('keydown', this.onEscapeKeypress);
 
     eventBus.$off('showSlideOutPanel', this.onShowSlideOutPanel);
     eventBus.$off('hideSlideOutPanel', this.onHideSlideOutPanel);
+    eventBus.$off('hideAllSlideOutPanels', this.onHideAllSideOutPanels);
   }
 };
 

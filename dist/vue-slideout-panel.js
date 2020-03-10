@@ -1,6 +1,6 @@
 /*!
- * vue2-slideout-panel v2.8.0 (https://github.com/officert/vue-slideout-panel)
- * (c) 2019 Tim Officer
+ * vue2-slideout-panel v2.9.0 (https://github.com/officert/vue-slideout-panel)
+ * (c) 2020 Tim Officer
  * Released under the MIT License.
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -12381,6 +12381,13 @@ var vm = {
     onHideSlideOutPanel: function onHideSlideOutPanel(panel) {
       this.closeCurrentPanel(panel);
     },
+    onHideAllSideOutPanels: function onHideAllSideOutPanels() {
+      var _this2 = this;
+
+      (this.panels || []).reverse().forEach(function (panel) {
+        _this2.closePanel(panel);
+      });
+    },
     createPanelStylesheet: function createPanelStylesheet(panel) {
       var head = document.head || document.getElementsByTagName('head')[0];
       var style = document.createElement('style');
@@ -12447,12 +12454,14 @@ var vm = {
 
     _eventBus2.default.$on('showSlideOutPanel', this.onShowSlideOutPanel);
     _eventBus2.default.$on('hideSlideOutPanel', this.onHideSlideOutPanel);
+    _eventBus2.default.$on('hideAllSlideOutPanels', this.onHideAllSideOutPanels);
   },
   destroyed: function destroyed() {
     document.removeEventListener('keydown', this.onEscapeKeypress);
 
     _eventBus2.default.$off('showSlideOutPanel', this.onShowSlideOutPanel);
     _eventBus2.default.$off('hideSlideOutPanel', this.onHideSlideOutPanel);
+    _eventBus2.default.$off('hideAllSlideOutPanels', this.onHideAllSideOutPanels);
   }
 };
 
@@ -13402,9 +13411,14 @@ function showPanelStack(panelOptions) {
   return panelResults;
 }
 
+function hideAllPanels() {
+  _eventBus2.default.$emit('hideAllSlideOutPanels');
+}
+
 exports.default = {
   showPanel: showPanel,
-  showPanelStack: showPanelStack
+  showPanelStack: showPanelStack,
+  hideAllPanels: hideAllPanels
 };
 module.exports = exports['default'];
 

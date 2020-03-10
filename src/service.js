@@ -67,7 +67,12 @@ function showPanelStack(panelOptions) {
   return panelResults;
 }
 
+function hideAllPanels() {
+  eventBus.$emit('hideAllSlideOutPanels');
+}
+
 export default {
   showPanel,
-  showPanelStack
+  showPanelStack,
+  hideAllPanels
 };
