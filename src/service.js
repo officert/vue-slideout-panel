@@ -3,6 +3,8 @@ import Promise from 'promise-polyfill';
 import eventBus from './eventBus';
 import utils from './utils/utils';
 
+let PANEL_DEFAULTS = {};
+
 class PanelResult {
   constructor(id, promise, panelOptions) {
     if (!id) throw new Error('id');
@@ -23,7 +25,7 @@ class PanelResult {
    * @param {Object} [panel.props] - any props you want to update
    */
   show(panel = {}) {
-    const panelOptions = Object.assign(this._panelOptions, panel);
+    const panelOptions = Object.assign(PANEL_DEFAULTS, this._panelOptions, panel);
 
     return showPanel(panelOptions, this._id);
   }
@@ -71,8 +73,15 @@ function hideAllPanels() {
   eventBus.$emit('hideAllSlideOutPanels');
 }
 
+function setPanelDefaults(defaults) {
+  if (!defaults) return;
+
+  PANEL_DEFAULTS = defaults;
+}
+
 export default {
   showPanel,
   showPanelStack,
-  hideAllPanels
+  hideAllPanels,
+  setPanelDefaults
 };

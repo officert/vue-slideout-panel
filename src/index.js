@@ -12,6 +12,8 @@ if (typeof window !== 'undefined' && window.Vue) {
       NewVue.component('slideout-panel', VueSlideoutPanel);
       NewVue.prototype.$showPanel = vueSlideoutPanelService.showPanel;
       NewVue.prototype.$showPanelStack = vueSlideoutPanelService.showPanelStack;
+      NewVue.prototype.$hideAllPanels = vueSlideoutPanelService.hideAllPanels;
+      NewVue.prototype.$setPanelDefaults = vueSlideoutPanelService.setPanelDefaults;
     }
   });
 
@@ -23,6 +25,8 @@ export default {
     NewVue.component('slideout-panel', VueSlideoutPanel);
     NewVue.prototype.$showPanel = vueSlideoutPanelService.showPanel;
     NewVue.prototype.$showPanelStack = vueSlideoutPanelService.showPanelStack;
+    NewVue.prototype.$hideAllPanels = vueSlideoutPanelService.hideAllPanels;
+    NewVue.prototype.$setPanelDefaults = vueSlideoutPanelService.setPanelDefaults;
   },
   VueSlideoutPanel,
   vueSlideoutPanelService

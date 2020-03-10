@@ -1,5 +1,5 @@
 /*!
- * vue2-slideout-panel v2.9.0 (https://github.com/officert/vue-slideout-panel)
+ * vue2-slideout-panel v2.10.0 (https://github.com/officert/vue-slideout-panel)
  * (c) 2020 Tim Officer
  * Released under the MIT License.
  */
@@ -11736,6 +11736,8 @@ if (typeof window !== 'undefined' && window.Vue) {
       NewVue.component('slideout-panel', _SlideoutPanel2.default);
       NewVue.prototype.$showPanel = _service2.default.showPanel;
       NewVue.prototype.$showPanelStack = _service2.default.showPanelStack;
+      NewVue.prototype.$hideAllPanels = _service2.default.hideAllPanels;
+      NewVue.prototype.$setPanelDefaults = _service2.default.setPanelDefaults;
     }
   });
 
@@ -11747,6 +11749,8 @@ exports.default = {
     NewVue.component('slideout-panel', _SlideoutPanel2.default);
     NewVue.prototype.$showPanel = _service2.default.showPanel;
     NewVue.prototype.$showPanelStack = _service2.default.showPanelStack;
+    NewVue.prototype.$hideAllPanels = _service2.default.hideAllPanels;
+    NewVue.prototype.$setPanelDefaults = _service2.default.setPanelDefaults;
   },
   VueSlideoutPanel: _SlideoutPanel2.default,
   vueSlideoutPanelService: _service2.default
@@ -13339,6 +13343,8 @@ var _utils2 = _interopRequireDefault(_utils);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var PANEL_DEFAULTS = {};
+
 var PanelResult = function () {
   function PanelResult(id, promise, panelOptions) {
     (0, _classCallCheck3.default)(this, PanelResult);
@@ -13357,7 +13363,7 @@ var PanelResult = function () {
     value: function show() {
       var panel = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
-      var panelOptions = (0, _assign2.default)(this._panelOptions, panel);
+      var panelOptions = (0, _assign2.default)(PANEL_DEFAULTS, this._panelOptions, panel);
 
       return showPanel(panelOptions, this._id);
     }
@@ -13415,10 +13421,17 @@ function hideAllPanels() {
   _eventBus2.default.$emit('hideAllSlideOutPanels');
 }
 
+function setPanelDefaults(defaults) {
+  if (!defaults) return;
+
+  PANEL_DEFAULTS = defaults;
+}
+
 exports.default = {
   showPanel: showPanel,
   showPanelStack: showPanelStack,
-  hideAllPanels: hideAllPanels
+  hideAllPanels: hideAllPanels,
+  setPanelDefaults: setPanelDefaults
 };
 module.exports = exports['default'];
 
