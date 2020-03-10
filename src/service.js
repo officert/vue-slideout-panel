@@ -45,7 +45,7 @@ function showPanel(panelOptions, existingId) {
 
   const id = existingId || utils.generateGuid();
 
-  panelOptions = Object.assign(PANEL_DEFAULTS, panelOptions);
+  panelOptions = Object.assign({}, PANEL_DEFAULTS, panelOptions);
 
   panelOptions.id = id;
   panelOptions.openOn = panelOptions.openOn || 'left';

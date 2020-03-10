@@ -1,7 +1,7 @@
 <transition name="fadeIn">
   <div class="slideout-panel clearfix">
     <transition name="fadeIn">
-      <div class="slideout-panel-bg" @click="onBgClicked" :class="{ 'transparent' : !panelBgVisible }" :style="{ 'z-index' : panelTopVisibleZindex }" v-if="panelsVisible && !panelBgRemoved">
+      <div class="slideout-panel-bg" @click="onBgClicked" :class="{ 'transparent' : !panelBgVisible }" :style="{ 'z-index' : panelTopVisibleZIndex }" v-if="panelsVisible && !panelBgRemoved">
       </div>
     </transition>
     <transition-group class="slideout-wrapper" tag="div" name="slideIn">

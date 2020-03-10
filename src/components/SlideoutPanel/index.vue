@@ -33,8 +33,9 @@ const vm = {
     panelBgRemoved() {
       return this.panels.filter(panel => panel.removeBg).length > 0;
     },
-    panelTopVisibleZindex() {
+    panelTopVisibleZIndex() {
       const visiblePanels = this.panels.filter(panel => panel.visible);
+
       return (visiblePanels.length > 0) ? Math.max(...visiblePanels.map(panel => panel.styles['z-index'])) : Z_INDEX_BASE;
     }
   },

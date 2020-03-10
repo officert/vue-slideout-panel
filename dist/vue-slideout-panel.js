@@ -1,5 +1,5 @@
 /*!
- * vue2-slideout-panel v2.11.0 (https://github.com/officert/vue-slideout-panel)
+ * vue2-slideout-panel v2.12.0 (https://github.com/officert/vue-slideout-panel)
  * (c) 2020 Tim Officer
  * Released under the MIT License.
  */
@@ -12266,10 +12266,11 @@ var vm = {
         return panel.removeBg;
       }).length > 0;
     },
-    panelTopVisibleZindex: function panelTopVisibleZindex() {
+    panelTopVisibleZIndex: function panelTopVisibleZIndex() {
       var visiblePanels = this.panels.filter(function (panel) {
         return panel.visible;
       });
+
       return visiblePanels.length > 0 ? Math.max.apply(Math, (0, _toConsumableArray3.default)(visiblePanels.map(function (panel) {
         return panel.styles['z-index'];
       }))) : Z_INDEX_BASE;
@@ -13260,7 +13261,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       'transparent': !_vm.panelBgVisible
     },
     style: ({
-      'z-index': _vm.panelTopVisibleZindex
+      'z-index': _vm.panelTopVisibleZIndex
     }),
     on: {
       "click": _vm.onBgClicked
@@ -13391,7 +13392,7 @@ function showPanel(panelOptions, existingId) {
 
   var id = existingId || _utils2.default.generateGuid();
 
-  panelOptions = (0, _assign2.default)(PANEL_DEFAULTS, panelOptions);
+  panelOptions = (0, _assign2.default)({}, PANEL_DEFAULTS, panelOptions);
 
   panelOptions.id = id;
   panelOptions.openOn = panelOptions.openOn || 'left';
