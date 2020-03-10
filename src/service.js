@@ -25,7 +25,7 @@ class PanelResult {
    * @param {Object} [panel.props] - any props you want to update
    */
   show(panel = {}) {
-    const panelOptions = Object.assign(PANEL_DEFAULTS, this._panelOptions, panel);
+    const panelOptions = Object.assign(this._panelOptions, panel);
 
     return showPanel(panelOptions, this._id);
   }
@@ -44,6 +44,8 @@ function showPanel(panelOptions, existingId) {
   if (!panelOptions.component) throw new Error('panelOptions.component is required');
 
   const id = existingId || utils.generateGuid();
+
+  panelOptions = Object.assign(PANEL_DEFAULTS, panelOptions);
 
   panelOptions.id = id;
   panelOptions.openOn = panelOptions.openOn || 'left';
