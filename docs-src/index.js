@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import VueFriendlyIframe from '../src/index';
+import VueSlideoutPanel from '../src/index';
 
 import App from './components/App';
 import Sidebar from './components/Sidebar';
@@ -9,7 +9,7 @@ import Panel3 from './components/Panel3';
 import Panel4 from './components/Panel4';
 import router from './router';
 
-Vue.use(VueFriendlyIframe);
+Vue.use(VueSlideoutPanel);
 
 Vue.component('sidebar', Sidebar);
 Vue.component('panel-1', Panel1);
