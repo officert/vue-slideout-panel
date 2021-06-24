@@ -78,7 +78,15 @@
       "plugin:vue/essential",
       "eslint:recommended"
     ],
-    "rules": {},
+    "rules": {
+      "quotes": [
+        2,
+        "single",
+        {
+          "avoidEscape": true
+        }
+      ]
+    },
     "parserOptions": {
       "parser": "babel-eslint"
     }

@@ -13,7 +13,8 @@ if (typeof window !== 'undefined' && window.Vue) {
       NewVue.prototype.$showPanel = vueSlideoutPanelService.showPanel;
       NewVue.prototype.$showPanelStack = vueSlideoutPanelService.showPanelStack;
       NewVue.prototype.$hideAllPanels = vueSlideoutPanelService.hideAllPanels;
-      NewVue.prototype.$setPanelDefaults = vueSlideoutPanelService.setPanelDefaults;
+      NewVue.prototype.$setPanelDefaults =
+        vueSlideoutPanelService.setPanelDefaults;
     }
   });
 
@@ -26,7 +27,8 @@ export default {
     NewVue.prototype.$showPanel = vueSlideoutPanelService.showPanel;
     NewVue.prototype.$showPanelStack = vueSlideoutPanelService.showPanelStack;
     NewVue.prototype.$hideAllPanels = vueSlideoutPanelService.hideAllPanels;
-    NewVue.prototype.$setPanelDefaults = vueSlideoutPanelService.setPanelDefaults;
+    NewVue.prototype.$setPanelDefaults =
+      vueSlideoutPanelService.setPanelDefaults;
   },
   VueSlideoutPanel,
   vueSlideoutPanelService
