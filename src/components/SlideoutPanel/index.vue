@@ -107,7 +107,7 @@ const vm = {
 
         if (!panel.height) {
           panel.styles.height = '900px';
-        } else if (!panel.height.endsWith || !panel.height.endsWith('px')) {
+        } else if (!isNaN(panel.height)) {
           panel.styles.height = `${panel.height}px`;
         } else {
           panel.styles.height = panel.height;
@@ -117,7 +117,7 @@ const vm = {
 
         if (!panel.width) {
           panel.styles.width = '900px';
-        } else if (!panel.width.endsWith || !panel.width.endsWith('px')) {
+        } else if (!isNaN(panel.width)) {
           panel.styles.width = `${panel.width}px`;
         } else {
           panel.styles.width = panel.width;
