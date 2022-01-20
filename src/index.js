@@ -21,7 +21,7 @@ if (typeof window !== 'undefined' && window.Vue) {
   window.vueSlideoutPanelService = vueSlideoutPanelService;
 }
 
-export default {
+/*export default {
   install: function(NewVue) {
     NewVue.component('slideout-panel', VueSlideoutPanel);
     NewVue.prototype.$showPanel = vueSlideoutPanelService.showPanel;
@@ -33,3 +33,20 @@ export default {
   VueSlideoutPanel,
   vueSlideoutPanelService
 };
+*/
+
+const VueSlideoutPanelPlugin = {
+  install(app, options) {
+    if (!options) {
+      options = {};
+    }
+    const VueSlidPanel = new T(options);
+    app.component('slideout-panel', VueSlideoutPanel);
+    app.config.globalProperties.$showPanel = vueSlideoutPanelService.showPanel;
+    app.config.globalProperties.$showPanelStack = vueSlideoutPanelService.showPanelStack;
+    app.config.globalProperties.$hideAllPanels = vueSlideoutPanelService.hideAllPanels;
+    app.config.globalProperties.$setPanelDefaults = vueSlideoutPanelService.setPanelDefaults;
+  },
+};
+
+export default VueSlideoutPanelPlugin;
