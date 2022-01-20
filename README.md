@@ -1,4 +1,4 @@
-# vue2-slideout-panel
+# vue3-slideout-panel
 > A stackable panel component for Vue.js
 
 [![npm version](https://badge.fury.io/js/vue2-slideout-panel.svg)](https://badge.fury.io/js/vue2-slideout-panel)
@@ -7,14 +7,14 @@
 [https://officert.github.io/vue-slideout-panel](https://officert.github.io/vue-slideout-panel)
 
 ## Requirements
-* [Vue.js](http://vuejs.org/) (^v2.1.4)
+* [Vue.js](http://vuejs.org/) (^v3.0.0)
 
 ## Installation
 
 ### NPM
 
 ```bash
-npm install vue2-slideout-panel --save-dev
+npm install vue3-slideout-panel --save-dev
 ```
 
 ### Contributing
