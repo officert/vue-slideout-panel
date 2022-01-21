@@ -18,7 +18,7 @@ if (typeof window !== 'undefined' && window.Vue) {
     }
   });
 
-  window.vueSlideoutPanelService = vueSlideoutPanelService;
+  window.vueSlideoutPanelService = vueSlideoutPanelService; 
 }
 
 /*export default {
