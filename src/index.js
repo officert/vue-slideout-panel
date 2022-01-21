@@ -40,7 +40,7 @@ const VueSlideoutPanelPlugin = {
     if (!options) {
       options = {};
     }
-    const VueSlidPanel = new T(options);
+    const VueSlidPanel = new VueSlideoutPanel(options);
     app.component('slideout-panel', VueSlideoutPanel);
     app.config.globalProperties.$showPanel = vueSlideoutPanelService.showPanel;
     app.config.globalProperties.$showPanelStack = vueSlideoutPanelService.showPanelStack;
